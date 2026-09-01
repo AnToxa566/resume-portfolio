@@ -1,0 +1,82 @@
+{
+  "roles": [
+    {
+      "id": "coverr",
+      "period": "Dec 2023 — Present",
+      "title": "Middle Full Stack Engineer",
+      "company": "Coverr",
+      "location": "Remote",
+      "badge": "C",
+      "bullets": [
+        "Owned features end-to-end on an Angular and NestJS microservice architecture — from architecture decisions through deployment and monitoring",
+        "Built and launched a subscription-based AI Studio feature integrating image, video and audio generation services, contributing to ~4× growth in subscription MRR",
+        "Built product analytics dashboards and ran 7+ A/B experiments on conversion funnels using PostHog feature flags — best results included a 100% improvement in purchase completion and 80% increase in checkout initiation",
+        "Contributed to infrastructure migration from GCP Cloud Run to Cloudflare Workers, cutting hosting costs ~85% and improving LCP from ~2s to ~1s",
+        "Designed a scalable localization system supporting 7 languages with automated content translation",
+        "Migrated frontend architecture to modern reactive patterns and improved CI/CD with automated versioning and release monitoring"
+      ],
+      "metrics": [
+        { "from": "~2s", "to": "~1s", "label": "LCP after edge migration" },
+        { "from": "1×", "to": "~4×", "label": "subscription MRR after AI Studio" }
+      ],
+      "tech": [
+        "Angular",
+        "NestJS",
+        "TypeScript",
+        "RxJS",
+        "NGXS",
+        "PostgreSQL",
+        "GCP",
+        "Cloudflare Workers",
+        "PostHog",
+        "Microservices"
+      ]
+    },
+    {
+      "id": "artwizard",
+      "period": "Sep 2023 — Dec 2023",
+      "title": "Junior Full Stack Engineer",
+      "company": "ArtWizard",
+      "location": "Remote",
+      "badge": "A",
+      "bullets": [
+        "Built and launched a web platform from scratch as sole developer, enabling users to discover and explore cultural events",
+        "Collaborated with a designer to implement a reusable UI kit ensuring visual consistency across the application",
+        "Extended backend APIs to support frontend functionality, contributing across the full stack"
+      ],
+      "tech": ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "UI Kit"]
+    },
+    {
+      "id": "binary-studio",
+      "period": "May 2023 — Aug 2023",
+      "title": "Student Full Stack Engineer",
+      "company": "Binary Studio Academy",
+      "location": "Remote",
+      "badge": "B",
+      "bullets": [
+        "Completed an intensive full stack program covering frontend, backend, real-time systems and containerized environments",
+        "Built applications with React, Express.js and Docker, including WebSocket real-time features and Jest-based automated testing"
+      ],
+      "tech": ["React", "Express.js", "Docker", "WebSockets", "Jest"]
+    },
+    {
+      "id": "groupbwt",
+      "period": "Oct 2022 — Feb 2023",
+      "title": "Intern Full Stack Engineer",
+      "company": "GroupBWT",
+      "location": "Zaporizhzhia, Ukraine",
+      "badge": "G",
+      "bullets": [
+        "Completed a full-time internship under mentor supervision, working in a structured Agile workflow with Jira-based task management",
+        "Contributed features across frontend, backend and admin panel of a full-stack web application",
+        "Gained hands-on experience with code reviews, task planning and iterative delivery"
+      ],
+      "tech": ["Vue.js", "Laravel", "Laravel Nova", "Agile", "Jira"]
+    }
+  ],
+  "education": {
+    "degree": "B.Sc. Computer Science",
+    "school": "Polytechnic National University, Zaporizhzhia",
+    "years": "2020–2024"
+  }
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "category": "Frontend",
+    "items": [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Angular",
+      "RxJS",
+      "NGXS",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "category": "Backend",
+    "items": [
+      "Node.js",
+      "NestJS",
+      "TypeORM",
+      "Prisma",
+      "PostgreSQL",
+      "MongoDB",
+      "REST APIs"
+    ]
+  },
+  {
+    "category": "Infrastructure",
+    "items": [
+      "GCP",
+      "Cloudflare Workers",
+      "Cloudflare CDN",
+      "Vercel",
+      "Docker",
+      "GitHub Actions",
+      "Nx"
+    ]
+  },
+  {
+    "category": "Practice",
+    "items": ["Git", "Figma", "PostHog", "Jest", "Microservices", "CI/CD"]
+  }
+]
