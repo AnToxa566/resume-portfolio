@@ -1,0 +1,90 @@
+{
+  "label": "About",
+  "headline": "Engineer first, measured second",
+  "intro": [
+    "I build production web apps across the whole stack — TypeScript on React/Next.js and Angular at the front, Node.js and NestJS behind it, deployed on GCP and Cloudflare. Three years in, most of that time inside product teams shipping to real users.",
+    "What I care about is the part after merge: whether the change moved a number, what it cost to run, and what it will cost the next person to maintain. I read dashboards as often as I read pull requests."
+  ],
+  "portraitLabel": "PORTRAIT — 4:5",
+  "cta": { "label": "Get in touch", "href": "#contact" },
+  "facts": [
+    { "label": "Location", "value": "Varna, Bulgaria (EET)" },
+    { "label": "Work", "value": "Remote · Available from September 2026" },
+    { "label": "Languages", "value": "English C1 reading/listening, B2 speaking (EF SET) · Ukrainian, Russian native" },
+    { "label": "Education", "value": "B.Sc. Computer Science, 2024" }
+  ],
+  "principles": {
+    "label": "How I work",
+    "items": [
+      {
+        "kicker": "Ownership",
+        "title": "End-to-end ownership",
+        "body": "Comfortable taking a feature from architecture decision through database schema, API, frontend, CI/CD and post-release monitoring. Shipping means it's live and observed, not merged."
+      },
+      {
+        "kicker": "Measurement",
+        "title": "Decisions backed by data",
+        "body": "Product analytics and feature flags as part of the normal workflow. Ran 7+ A/B experiments on conversion funnels rather than shipping on intuition."
+      },
+      {
+        "kicker": "Tooling",
+        "title": "AI-assisted workflow",
+        "body": "Custom prompts and context setups built into daily development to cut boilerplate and accelerate delivery — a deliberate process, not an occasional tool."
+      }
+    ],
+    "note": "Day to day that runs inside structured Agile workflows — Jira-tracked planning, code review, iterative delivery — and usually alongside a designer, working from the same files rather than across a handoff."
+  },
+  "story": {
+    "label": "Story",
+    "entries": [
+      {
+        "year": "2020",
+        "kicker": "First year",
+        "title": "Starting computer science in Zaporizhzhia",
+        "body": "Enrolled at the Polytechnic National University with no real code behind me. The first year was algorithms on paper and C++ in a lab, and the first thing that stuck was how much faster I learned when I had something to ship.",
+        "image": "PHOTO — UNIVERSITY"
+      },
+      {
+        "year": "2021",
+        "kicker": "First shipped thing",
+        "title": "A puzzle game in Unity, released to strangers",
+        "body": "Built a small puzzle game in Unity over a few months and put it out publicly. It taught me more about scope and finishing than any course did — most of the work turned out to be the last ten percent.",
+        "image": "PHOTO — UNITY GAME"
+      },
+      {
+        "year": "2022",
+        "kicker": "First team",
+        "title": "Internship at GroupBWT",
+        "body": "First time working inside a real process: Jira tickets, code review, a mentor reading everything I wrote. Shipped features across frontend, backend and admin panel, and learned to size work honestly.",
+        "image": "PHOTO — OFFICE"
+      },
+      {
+        "year": "2023",
+        "kicker": "Summer intensive",
+        "title": "Binary Studio Academy",
+        "body": "Three months of full stack work at an uncomfortable pace: React, Express, Docker, WebSockets, tests expected rather than optional. The habit of writing code someone else will review started here.",
+        "image": "PHOTO — ACADEMY"
+      },
+      {
+        "year": "2023",
+        "kicker": "Product work",
+        "title": "Joining a product team at Coverr",
+        "body": "Moved from building features to owning them: an Angular and NestJS microservice platform with paying users, analytics on every funnel, and infrastructure decisions with a monthly bill attached.",
+        "image": "PHOTO — DESK SETUP"
+      },
+      {
+        "year": "2024",
+        "kicker": "Relocation",
+        "title": "Moving to Varna",
+        "body": "Relocated to the Bulgarian coast and settled into remote work across European time zones. Same job, quieter mornings, and a commute that ends at the sea instead of a metro station.",
+        "image": "PHOTO — VARNA"
+      }
+    ]
+  },
+  "now": {
+    "label": "Now",
+    "heading": "Based in Varna, Bulgaria",
+    "body": "Working remotely on EET, which overlaps comfortably with most European teams and part of the US morning. Available for a new role from September 2026 — full-time remote, ideally on a product with real users and real numbers to move.",
+    "image": "PHOTO — VARNA, WIDE"
+  }
+}

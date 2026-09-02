@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/cn";
@@ -12,6 +13,7 @@ import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -39,7 +41,11 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-muted transition-colors hover:text-ink"
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={cn(
+                  "text-sm transition-colors hover:text-ink",
+                  pathname === item.href ? "text-ink" : "text-muted",
+                )}
               >
                 {item.label}
               </Link>

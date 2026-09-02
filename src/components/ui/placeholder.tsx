@@ -1,8 +1,17 @@
 import { cn } from "@/lib/cn";
 
+type Ratio = "4/5" | "4/3" | "16/10" | "21/9";
+
+const ratioClass: Record<Ratio, string> = {
+  "4/5": "aspect-[4/5]",
+  "4/3": "aspect-[4/3]",
+  "16/10": "aspect-[16/10]",
+  "21/9": "aspect-[21/9]",
+};
+
 interface PlaceholderProps {
   label: string;
-  ratio: "4/5" | "16/10";
+  ratio: Ratio;
   /** Label placement inside the box. */
   align?: "center" | "start";
   /** Adds the hover brightness/scale used when the box sits inside a link. */
@@ -26,7 +35,7 @@ export function Placeholder({
       style={{ backgroundImage: "var(--stripes)" }}
       className={cn(
         "flex rounded-lg border border-line",
-        ratio === "4/5" ? "aspect-[4/5]" : "aspect-[16/10]",
+        ratioClass[ratio],
         align === "center" ? "items-center justify-center p-4" : "items-end justify-start p-5",
         interactive &&
           "brightness-90 transition-[filter,transform] duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:brightness-100",
