@@ -24,6 +24,77 @@ export interface ShortProject {
   links: ProjectLinks;
 }
 
+/** ------------------------------------------------------------------ *
+ * Case study — one per `/work/[slug]` page (see case-studies.json).
+ * ------------------------------------------------------------------ */
+
+export interface CaseStudyMeta {
+  role: string;
+  type: string;
+  year: string;
+  duration: string;
+  team: string;
+}
+
+export interface CaseStudyDecision {
+  title: string;
+  body: string;
+}
+
+export interface CaseStudyMetric {
+  from: string;
+  to: string;
+  caption: string;
+}
+
+export interface CaseStudyDiagramBox {
+  title: string;
+  subtitle?: string;
+}
+
+export interface CaseStudyDiagramNode {
+  /** Boxes on one row: 1 → single centred box, >1 → responsive grid. */
+  boxes: CaseStudyDiagramBox[];
+  /** Connector rendered above this node (omit on the first). */
+  connector?: "plain" | "signal";
+  /** Label shown on a "signal" connector, e.g. "SSR + CACHE AT EDGE". */
+  connectorLabel?: string;
+  /** Render boxes as muted pills (bottom data-store row). */
+  muted?: boolean;
+}
+
+export interface CaseStudyDiagram {
+  label: string;
+  nodes: CaseStudyDiagramNode[];
+}
+
+export interface CaseStudyStack {
+  intro: string;
+  diagram?: CaseStudyDiagram;
+  tech: string[];
+}
+
+export interface CaseStudyOutcome {
+  metrics: CaseStudyMetric[];
+  note?: string;
+}
+
+export interface CaseStudy {
+  slug: string;
+  name: string;
+  summary: string;
+  /** Placeholder label for the hero image slot. */
+  heroImage: string;
+  links: { live?: string; code?: string };
+  meta: CaseStudyMeta;
+  context: string[];
+  problem: string[];
+  stack: CaseStudyStack;
+  decisions: CaseStudyDecision[];
+  outcome: CaseStudyOutcome;
+  tradeoffs: string[];
+}
+
 export interface Work {
   featured: Project;
   projects: Project[];

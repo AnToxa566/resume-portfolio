@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { ShortProject } from "@/data";
 import { SectionLabel } from "@/components/ui/section-label";
 import { ProjectLinkRow } from "./project-links";
@@ -14,7 +16,16 @@ export function AlsoShipped({ items }: { items: ShortProject[] }) {
           className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-b border-line px-5 py-[18px] last:border-b-0"
         >
           <span className="shrink-0 grow-0 basis-[90px] text-base display">
-            {item.name}
+            {item.links.caseStudy ? (
+              <Link
+                href={item.links.caseStudy}
+                className="transition-colors hover:text-signal"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              item.name
+            )}
           </span>
           <span className="grow basis-[260px] text-sm text-muted">
             {item.summary}

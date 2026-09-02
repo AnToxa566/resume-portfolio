@@ -7,7 +7,7 @@
     "links": {
       "live": "#",
       "github": "#",
-      "caseStudy": "#"
+      "caseStudy": "/work/coverr"
     }
   },
   "projects": [
@@ -18,7 +18,8 @@
       "tech": ["Next.js", "NestJS", "PostgreSQL"],
       "links": {
         "live": "#",
-        "github": "#"
+        "github": "#",
+        "caseStudy": "/work/artwizard"
       }
     },
     {
@@ -28,7 +29,8 @@
       "tech": ["Next.js", "NestJS", "Prisma", "Nx", "GCS"],
       "links": {
         "live": "#",
-        "github": "#"
+        "github": "#",
+        "caseStudy": "/work/data-red-room"
       }
     },
     {
@@ -39,7 +41,7 @@
       "links": {
         "live": "#",
         "github": "#",
-        "caseStudy": "#"
+        "caseStudy": "/work/eliza-barber"
       }
     },
     {
@@ -49,7 +51,8 @@
       "status": "In progress",
       "tech": ["Next.js", "NestJS", "Cloudflare Agents", "Redis"],
       "links": {
-        "github": "#"
+        "github": "#",
+        "caseStudy": "/work/insula"
       }
     }
   ],
@@ -60,7 +63,8 @@
       "tech": ["Next.js", "NestJS", "PostgreSQL"],
       "links": {
         "live": "#",
-        "github": "#"
+        "github": "#",
+        "caseStudy": "/work/vibe"
       }
     },
     {
@@ -69,7 +73,8 @@
       "tech": ["Next.js", "NestJS", "MongoDB"],
       "links": {
         "live": "#",
-        "github": "#"
+        "github": "#",
+        "caseStudy": "/work/rowdy"
       }
     }
   ]

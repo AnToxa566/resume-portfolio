@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import type { ProjectLinks } from "@/data";
 import { cn } from "@/lib/cn";
 
@@ -42,13 +44,12 @@ export function ProjectLinkRow({
         </a>
       )}
       {showCaseStudy && links.caseStudy && (
-        <a
+        <Link
           href={links.caseStudy}
-          {...externalProps(links.caseStudy)}
           className="text-ink transition-colors hover:text-signal"
         >
           CASE STUDY →
-        </a>
+        </Link>
       )}
     </div>
   );

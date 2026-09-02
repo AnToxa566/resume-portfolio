@@ -1,0 +1,560 @@
+[
+  {
+    "slug": "coverr",
+    "name": "Coverr",
+    "summary": "Stock media platform — AI generation, edge migration, and conversion experiments",
+    "heroImage": "COVERR — FULL-WIDTH PRODUCT SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Full Stack Engineer",
+      "type": "Product · Commercial",
+      "year": "2023 — Present",
+      "duration": "2.5 years",
+      "team": "Product team"
+    },
+    "context": [
+      "Coverr is a stock media platform: video and image assets, free and licensed, used mainly by marketers, designers and small studios who need footage in the next twenty minutes rather than next week. Traffic is global and heavily search-driven, and most visitors arrive on a media page before they know what the product is.",
+      "I joined as the team was moving from a free library toward a subscription product. My work covered the Angular frontend, several NestJS services behind it, and the infrastructure both run on — features owned end-to-end, from the architecture decision to the dashboard that showed whether it worked."
+    ],
+    "problem": [
+      "Two constraints pulled in opposite directions. The catalogue is media-heavy and mostly served to anonymous first-time visitors, so page weight and time-to-first-frame decide whether a session happens at all — LCP sat around two seconds on the pages that mattered most. At the same time, running server-rendered Angular on Cloud Run meant paying for idle containers in every region we wanted to be fast in.",
+      "The product side had its own constraint: subscriptions were new, the funnel was long, and nobody could say with confidence which step lost people. Adding an AI generation feature on top of a guessed funnel would have been expensive in both senses."
+    ],
+    "stack": {
+      "intro": "Angular with NGXS and RxJS on the client, a set of NestJS services behind an API gateway, PostgreSQL for catalogue and billing state, and object storage for media. Rendering and caching moved to Cloudflare Workers; the services stayed on GCP.",
+      "diagram": {
+        "label": "REQUEST PATH",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Browser — Angular SPA", "subtitle": "NGXS · RxJS" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "SSR + CACHE AT EDGE",
+            "boxes": [
+              { "title": "Cloudflare Workers", "subtitle": "edge SSR · CDN cache · image transform" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "API gateway — NestJS", "subtitle": "auth · rate limiting · routing" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "Catalogue", "subtitle": "search · collections" },
+              { "title": "Billing", "subtitle": "plans · entitlements" },
+              { "title": "AI Studio", "subtitle": "job queue · providers" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "PostgreSQL" },
+              { "title": "Object storage — media" },
+              { "title": "Image / video / audio APIs" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Angular", "NGXS", "RxJS", "NestJS", "PostgreSQL", "GCP", "Cloudflare Workers", "PostHog"]
+    },
+    "decisions": [
+      {
+        "title": "Render at the edge instead of scaling containers",
+        "body": "Cloud Run gave us regional latency and a bill that grew with idle capacity. Moving SSR and caching to Workers put rendering next to the visitor and removed the always-on cost, at the price of a stricter runtime — no long-lived connections, tight CPU budgets, and every dependency checked for Node built-ins."
+      },
+      {
+        "title": "Run generation as jobs, not requests",
+        "body": "Image, video and audio providers answer in seconds to minutes and fail in ways that are not the user's fault. AI Studio queues every generation as a job with its own state, so retries, provider swaps and partial failures are handled server-side and the client only subscribes to progress."
+      },
+      {
+        "title": "Ship funnel changes behind flags",
+        "body": "Every checkout and paywall change went out as a PostHog feature flag with an experiment attached rather than a release. That made losing variants cheap and turned funnel debates into a question of which cohort we were reading — seven experiments in, the checkout flow was measurably different from what any of us had proposed on day one."
+      },
+      {
+        "title": "Localization as content, not translation files",
+        "body": "Seven languages across a search-driven catalogue meant translated strings were the small part; routes, metadata and generated catalogue copy were the rest. Translation runs as an automated content pipeline, so adding a locale is a configuration change rather than a release."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "~2s", "to": "~1s", "caption": "LCP on catalogue pages after edge migration" },
+        { "from": "Cloud Run", "to": "Workers", "caption": "hosting cost cut ~85%" },
+        { "from": "1×", "to": "~4×", "caption": "subscription MRR after AI Studio shipped" },
+        { "from": "baseline", "to": "+100%", "caption": "purchase completion, best experiment variant" }
+      ],
+      "note": "Checkout initiation rose 80% in the same set of experiments, and the localization pipeline now covers seven languages without a per-locale release."
+    },
+    "tradeoffs": [
+      "The edge runtime constrains what the frontend can depend on. Every library that reaches for a Node built-in has to be replaced or shimmed, and debugging a Worker is meaningfully worse than debugging a container. That cost is paid on every new dependency, not once during the migration.",
+      "The service split also grew ahead of the team. Three services and a gateway is more operational surface than a product team of this size ideally maintains; a modular monolith with the same boundaries would have given us most of the isolation at a fraction of the deployment complexity.",
+      "And experiment hygiene lagged the experiment count. Several tests ran without a pre-registered success metric, which made two of the seven results arguable after the fact. Next time the metric and the stopping rule get written down before the flag goes out."
+    ]
+  },
+  {
+    "slug": "artwizard",
+    "name": "ArtWizard",
+    "summary": "Cultural events platform built from scratch as the sole developer",
+    "heroImage": "ARTWIZARD — FULL-WIDTH PRODUCT SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Sole Developer",
+      "type": "Product · Contract",
+      "year": "2022",
+      "duration": "8 months",
+      "team": "Solo, with a founder"
+    },
+    "context": [
+      "ArtWizard is a listings and ticketing site for exhibitions, gallery openings and small cultural events — the kind that never make it into the big aggregators. Organisers publish an event, visitors browse by city and date, and a share of tickets sells through the site rather than at the door.",
+      "It started as a founder with a spreadsheet and a domain. I was the only engineer, so every decision — schema, hosting, payment provider, the admin the organisers would actually use — was mine to make and mine to live with."
+    ],
+    "problem": [
+      "The catalogue changes every week and most of it is entered by non-technical organisers, so the editing experience mattered more than the public pages. A clumsy admin meant events entered late, wrong, or not at all — and an empty listing page is worse than no page.",
+      "Ticketing added a second problem: money moving between the platform, the organiser and the buyer, with refunds and cancellations that had to reconcile. Getting that subtly wrong is the kind of bug that costs trust rather than a page view."
+    ],
+    "stack": {
+      "intro": "Next.js app router for the public site and the organiser dashboard, a NestJS API behind it, and PostgreSQL as the single source of truth for events, orders and payouts. Payments run through Stripe Connect; images sit in object storage behind a CDN.",
+      "diagram": {
+        "label": "SHAPE",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Next.js — public site + dashboard", "subtitle": "SSG listings · SSR checkout" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "NestJS API", "subtitle": "events · orders · payouts" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "STRIPE CONNECT",
+            "boxes": [
+              { "title": "Payments", "subtitle": "charges · refunds · organiser payouts" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "PostgreSQL" },
+              { "title": "Object storage — media" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Next.js", "NestJS", "PostgreSQL", "Stripe Connect", "GCP"]
+    },
+    "decisions": [
+      {
+        "title": "One database, no premature services",
+        "body": "A single Postgres schema with clear table boundaries carried events, ticketing and payouts without a second service. For one engineer and a few hundred events a month, the isolation a microservice would have bought was not worth the deploy and migration overhead."
+      },
+      {
+        "title": "Build the admin first",
+        "body": "The organiser dashboard shipped before the public site was styled. Getting real events into the system early meant the listing pages were built against real data and real edge cases — recurring events, sold-out states, last-minute cancellations — instead of seed fixtures."
+      },
+      {
+        "title": "Let Stripe hold the money",
+        "body": "Stripe Connect handles the split between platform fee and organiser payout, so the database records intent and Stripe records truth. Reconciliation is a nightly job comparing the two, not a ledger I had to keep correct by hand."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "spreadsheet", "to": "self-serve", "caption": "organisers publish without a developer in the loop" },
+        { "from": "0", "to": "~300", "caption": "events listed in the first six months" },
+        { "from": "door only", "to": "~40%", "caption": "ticket sales that moved online" }
+      ],
+      "note": "The site ran for over a year on a single small instance with no on-call — the payout reconciliation job caught every mismatch before a human noticed."
+    },
+    "tradeoffs": [
+      "The single-database, single-service shape was right for launch and would not survive real growth. Anything that needed independent scaling — search, notifications, a second product line — would force the split I deferred, and deferring it made the eventual seams harder to cut.",
+      "As the only engineer I optimised for shipping over test coverage. The checkout path got integration tests; large parts of the dashboard did not, and every change there was verified by hand. That was a deliberate trade at the time and a slow tax afterwards."
+    ]
+  },
+  {
+    "slug": "data-red-room",
+    "name": "Data Red Room",
+    "summary": "Secure document data rooms with granular, per-recipient sharing permissions",
+    "heroImage": "DATA RED ROOM — FULL-WIDTH PRODUCT SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Full Stack Engineer",
+      "type": "Product · B2B",
+      "year": "2024",
+      "duration": "10 months",
+      "team": "Small product team (3)"
+    },
+    "context": [
+      "Data Red Room is a virtual data room: companies upload sensitive documents — due diligence packs, board materials, IP portfolios — and share them with outside parties under tight, auditable control. The customer is usually a lawyer or a corporate development team, and the stakes of a leak are measured in deals, not likes.",
+      "I owned the permissions model and the viewer end-to-end: how access is granted, how a document is rendered without ever handing over the original file, and how every view is logged in a way that stands up in an audit."
+    ],
+    "problem": [
+      "Access control here is not a role dropdown. A single document can be visible to one recipient, watermarked for another, and expired for a third, with rules that change mid-deal. The model has to be expressive enough for that and simple enough that a non-technical admin sets it up correctly under time pressure.",
+      "The viewer is the other half. Letting a browser download the real PDF defeats the point, so pages have to be rendered server-side, streamed as images, watermarked per viewer, and still feel fast on a 400-page document over a hotel connection."
+    ],
+    "stack": {
+      "intro": "An Nx monorepo holding a Next.js frontend and a NestJS API, Prisma over PostgreSQL for the permission graph and audit log, and Google Cloud Storage for encrypted document blobs. A render worker turns document pages into watermarked image tiles on demand.",
+      "diagram": {
+        "label": "DOCUMENT ACCESS",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Browser — viewer", "subtitle": "tiled pages · no original file" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "PERMISSION CHECK PER PAGE",
+            "boxes": [
+              { "title": "NestJS API", "subtitle": "access graph · audit log" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "Render worker", "subtitle": "page → watermarked image tile" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "PostgreSQL — Prisma" },
+              { "title": "GCS — encrypted blobs" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Next.js", "NestJS", "Prisma", "Nx", "PostgreSQL", "GCS"]
+    },
+    "decisions": [
+      {
+        "title": "Model permissions as a graph, not roles",
+        "body": "Access is an edge between a recipient and a resource, carrying its own attributes — watermark, expiry, download allowed. Every check walks the graph from user to document, which keeps one code path for the whole product and makes the audit log a natural by-product of the check."
+      },
+      {
+        "title": "Never send the original file",
+        "body": "The browser only ever receives image tiles rendered on the server, each stamped with the current viewer's identity. It costs render time and storage, but a screenshot leads back to a person and the source document never leaves the backend."
+      },
+      {
+        "title": "Append-only audit log",
+        "body": "Every grant, revoke and page view is an immutable row. Nothing in the app can edit or delete audit history, so 'who saw what, when' is answerable months later without trusting that no one tampered with it."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "roles", "to": "per-edge rules", "caption": "sharing granularity the admin can express" },
+        { "from": "~4s", "to": "<1s", "caption": "first page render on large documents" },
+        { "from": "manual", "to": "automatic", "caption": "audit export for closed deals" }
+      ],
+      "note": "The permission graph shipped once and absorbed three later feature requests — group access, time-boxed rooms, view-only links — without a schema change."
+    },
+    "tradeoffs": [
+      "The graph model is powerful and not free to reason about. A simple 'share with this team' action is several edges under the hood, and debugging an unexpected denial means tracing a path rather than reading a row. We added a permissions inspector to the admin to make that bearable.",
+      "Server-side rendering of every page shifts cost from the client to our infrastructure. Caching watermarked tiles is hard because the watermark is per-viewer, so a popular document viewed by twenty people is rendered twenty times. For the document sizes we saw it was affordable; a media-heavy corpus would need a rethink."
+    ]
+  },
+  {
+    "slug": "eliza-barber",
+    "name": "Eliza Barber",
+    "summary": "Multilingual booking site across five locales with SEO-tuned routing",
+    "heroImage": "ELIZA BARBER — FULL-WIDTH SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Full Stack Engineer",
+      "type": "Personal project",
+      "year": "2025",
+      "duration": "6 weeks",
+      "team": "Solo"
+    },
+    "context": [
+      "A single-location barbershop in a city with a mixed-language client base: locals, long-term residents and tourists, all searching in different languages. The site's job is narrow — be findable, show the price list, and take a booking without a phone call."
+    ],
+    "problem": [
+      "Five locales on a site this small is mostly an SEO problem, not a translation one. Each language needs its own indexable URL, correct alternates, and localized metadata, or four of the five simply never rank. The previous site served one language and lost most of its search traffic to aggregator directories."
+    ],
+    "stack": {
+      "intro": "Next.js 15 with the app router, next-intl for locale routing and messages, Tailwind v4 for styling, statically generated per locale and served from the edge. No backend of its own — bookings hand off to the shop's existing scheduling provider.",
+      "diagram": {
+        "label": "ROUTING",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Request — /:locale/:page", "subtitle": "middleware · locale negotiation" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "STATIC PER LOCALE",
+            "boxes": [
+              { "title": "/bg" },
+              { "title": "/en" },
+              { "title": "/ru" },
+              { "title": "/uk" },
+              { "title": "/de" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "hreflang + sitemap" },
+              { "title": "localized metadata" },
+              { "title": "booking provider" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Next.js 15", "Tailwind v4", "next-intl", "Vercel"]
+    },
+    "decisions": [
+      {
+        "title": "Path-prefixed locales, no auto-redirect",
+        "body": "Every locale gets a real URL and every page is generated for all five. Language is suggested from the Accept-Language header but never forced, so a shared link always opens in the language it was shared in — and crawlers see five stable trees instead of one redirect."
+      },
+      {
+        "title": "No booking backend of my own",
+        "body": "The shop already ran its calendar in a scheduling tool the staff knew. Writing a second source of truth would have created a sync problem for no benefit, so the site stays static and hands off at the booking step."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "1 locale", "to": "5 locales", "caption": "indexable, each with its own metadata" },
+        { "from": "phone", "to": "self-serve", "caption": "bookings taken without a call" }
+      ]
+    },
+    "tradeoffs": [
+      "Translations live in the repository, so a price change is a commit and a deploy rather than an edit by the owner. That was the right call for five pages and would be the wrong call for fifty — the next version puts the copy behind a small CMS.",
+      "Handing off to an external booking tool also means the last step of the funnel is not measurable from my side. I can see intent, not completion."
+    ]
+  },
+  {
+    "slug": "insula",
+    "name": "Insula",
+    "summary": "A social network where autonomous AI agents post, comment and message each other",
+    "heroImage": "INSULA — FULL-WIDTH PRODUCT SCREENSHOT",
+    "links": {
+      "code": "#"
+    },
+    "meta": {
+      "role": "Creator",
+      "type": "Side project · In progress",
+      "year": "2025 — Present",
+      "duration": "Ongoing",
+      "team": "Solo"
+    },
+    "context": [
+      "Insula is a social network with no human posters. Every account is an autonomous agent with a persona, a memory and a schedule; they write posts, reply to each other, form opinions and fall out over the course of days. Humans watch, and can nudge, but the timeline runs on its own.",
+      "It began as a way to understand what agent frameworks actually cost to run at more than demo scale — hundreds of agents waking on timers, reading a feed, and deciding whether they have anything to say."
+    ],
+    "problem": [
+      "The obvious build — a cron job that loops over agents and calls a model — falls over fast. Costs scale with population whether or not anyone has anything to say, context windows fill with feed noise, and one slow provider call stalls the batch.",
+      "Agents also need continuity. A persona that forgets yesterday's argument is not a character, it is a random text generator, so memory has to be selective, cheap to read, and stable across restarts."
+    ],
+    "stack": {
+      "intro": "A Next.js frontend for the read-only timeline, a NestJS API for accounts and posts, Cloudflare Agents (Durable Objects) giving each agent its own stateful instance and alarm-driven schedule, and Redis for the shared feed and rate-limit budgets.",
+      "diagram": {
+        "label": "AGENT LOOP",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Durable Object — one per agent", "subtitle": "persona · memory · alarm" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "WAKE ON ALARM",
+            "boxes": [
+              { "title": "Decide to post?", "subtitle": "read feed slice · check budget" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "Model call", "subtitle": "queued · provider fallback" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "NestJS API", "subtitle": "persist post · fan out" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "PostgreSQL — posts" },
+              { "title": "Redis — feed · budgets" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Next.js", "NestJS", "Cloudflare Agents", "Durable Objects", "Redis", "PostgreSQL"]
+    },
+    "decisions": [
+      {
+        "title": "One Durable Object per agent",
+        "body": "Each agent is a single addressable instance that owns its own state and its own alarm. There is no central scheduler to become a bottleneck — an agent wakes itself, does its work, and sleeps, and adding a thousand more agents is a thousand more cheap objects rather than a bigger loop."
+      },
+      {
+        "title": "Memory as a rolling summary",
+        "body": "An agent keeps a short structured summary of what matters — relationships, running arguments, recent posts — updated after each turn instead of replaying full history. Reads are one small record, and a restart loses nothing important."
+      },
+      {
+        "title": "Every model call is a budgeted job",
+        "body": "Calls go through a queue with per-agent and global spend budgets. A provider outage or a runaway agent degrades gracefully — turns are skipped, not failed — and the daily cost has a ceiling I set rather than discover."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "cron loop", "to": "self-scheduling", "caption": "agents wake independently, no central batch" },
+        { "from": "full history", "to": "rolling summary", "caption": "context cost per turn, roughly flat with age" },
+        { "from": "unbounded", "to": "capped", "caption": "daily model spend regardless of agent count" }
+      ],
+      "note": "Currently running a few hundred agents on a hobby-tier budget; the architecture is the point, the timeline is the demo."
+    },
+    "tradeoffs": [
+      "Durable Objects make per-agent state easy and cross-agent queries hard. Anything global — trending topics, who-follows-whom analysis — has to be assembled from Redis and Postgres rather than asked of the agents directly, which is a second data model to keep honest.",
+      "The rolling summary is lossy by design. Agents occasionally forget a detail a reader remembers, and there is no clean way to tell whether that is a bug or just how memory works. It is the right trade for cost, but it makes the system hard to evaluate."
+    ]
+  },
+  {
+    "slug": "vibe",
+    "name": "Vibe",
+    "summary": "Full-stack barbershop site with a self-serve admin panel",
+    "heroImage": "VIBE — FULL-WIDTH SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Full Stack Engineer",
+      "type": "Client project",
+      "year": "2023",
+      "duration": "4 weeks",
+      "team": "Solo"
+    },
+    "context": [
+      "A two-chair barbershop that wanted to stop taking bookings over Instagram DMs. The brief was small and concrete: a good-looking single-page site, a booking form, and a way for the owner to manage services and time slots without calling me."
+    ],
+    "problem": [
+      "The real requirement was the admin, not the site. The owner is not technical and would abandon anything that felt like software, so the management screens had to be as plain as a paper calendar — add a service, block an afternoon, see tomorrow's list."
+    ],
+    "stack": {
+      "intro": "Next.js for the public site and the admin, a small NestJS API, and PostgreSQL for services, slots and bookings. Email confirmations through a transactional provider; deployed on a single instance.",
+      "tech": ["Next.js", "NestJS", "PostgreSQL"]
+    },
+    "decisions": [
+      {
+        "title": "One app, one deploy",
+        "body": "Public site and admin ship from the same Next.js project behind a login. For a site this size, a separate admin app would have doubled the deployment work to save nothing."
+      },
+      {
+        "title": "Slots, not a calendar engine",
+        "body": "Availability is a list of generated time slots the owner can toggle, not a recurring-rules engine. It covers every case the shop actually has and took a day instead of a fortnight."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "Instagram DMs", "to": "booking form", "caption": "reservations that no longer need a reply" },
+        { "from": "me", "to": "the owner", "caption": "who updates services and hours" }
+      ],
+      "note": "Handed over with a one-page guide and no support contract; it has needed no changes since."
+    },
+    "tradeoffs": [
+      "The generated-slots model has no concept of staff or resources, so the day the shop adds a third chair it needs a real scheduling model. That was a known ceiling, accepted to ship in a month."
+    ]
+  },
+  {
+    "slug": "rowdy",
+    "name": "Rowdy",
+    "summary": "Full-stack site and admin for a two-location barbershop brand",
+    "heroImage": "ROWDY — FULL-WIDTH SCREENSHOT",
+    "links": {
+      "live": "#",
+      "code": "#"
+    },
+    "meta": {
+      "role": "Full Stack Engineer",
+      "type": "Client project",
+      "year": "2024",
+      "duration": "5 weeks",
+      "team": "Solo"
+    },
+    "context": [
+      "Rowdy is a small barbershop brand with two locations and plans for a third. They had a template site that could not represent more than one address and a booking inbox split across two phones."
+    ],
+    "problem": [
+      "Two locations doubles everything the customer sees — hours, prices, availability, directions — and the site has to make choosing the right one effortless while keeping the brand a single thing. The admin has to let one manager run both without switching accounts."
+    ],
+    "stack": {
+      "intro": "Next.js frontend, NestJS API, and MongoDB storing locations, services and bookings as documents — a natural fit for per-location config that varies in shape. One admin, scoped by location.",
+      "diagram": {
+        "label": "SHAPE",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Next.js — brand site", "subtitle": "location picker · per-location pages" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "NestJS API", "subtitle": "bookings scoped by location" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "MongoDB — locations · services · bookings" }
+            ]
+          }
+        ]
+      },
+      "tech": ["Next.js", "NestJS", "MongoDB"]
+    },
+    "decisions": [
+      {
+        "title": "Location as a document, not a column",
+        "body": "Each location is a single document carrying its own hours, services, pricing and copy. Adding the third shop is creating one record in the admin, and per-location quirks never leak into a shared schema."
+      },
+      {
+        "title": "One admin, location-scoped views",
+        "body": "The manager logs in once and switches location with a selector rather than an account. Bookings, availability and content are all filtered by the active location, so running two shops feels like running one."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "1 address", "to": "N locations", "caption": "the site scales to new shops without a rebuild" },
+        { "from": "two phones", "to": "one dashboard", "caption": "where bookings land" }
+      ],
+      "note": "The third location was added by the client themselves, six months after handover."
+    },
+    "tradeoffs": [
+      "Document-per-location keeps things flexible but pushes validation into the application — nothing stops a malformed services list except the admin form. For a handful of locations edited by one person that is fine; a franchise with many editors would want a stricter schema."
+    ]
+  }
+]
