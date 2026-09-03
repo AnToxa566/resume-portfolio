@@ -48,6 +48,7 @@ export type {
   Project,
   ProjectLinks,
   Role,
+  RoleDetail,
   RoleMetric,
   ShortProject,
   StackGroup,

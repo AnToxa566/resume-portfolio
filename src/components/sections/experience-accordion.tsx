@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Role } from "@/data";
-import { Metric } from "@/components/ui/metric";
 import { Tag } from "@/components/ui/tag";
 import { cn } from "@/lib/cn";
 
@@ -64,32 +64,76 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
                 id={panelId}
                 role="region"
                 aria-labelledby={buttonId}
-                className="px-5 pb-7"
+                className="flex flex-wrap justify-between items-start gap-x-12 gap-y-8 px-5 pb-7"
               >
-                <ul className="flex max-w-[70ch] list-disc flex-col gap-2.5 pl-[18px] text-[15px] text-muted">
+                <ul className="flex min-w-0 max-w-[62ch] flex-[1_1_380px] list-disc flex-col gap-2.5 pl-[18px] text-[15px] text-muted">
                   {role.bullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
 
-                {role.metrics && role.metrics.length > 0 && (
-                  <div className="mt-7 flex flex-wrap gap-8 rounded-md border border-line p-5">
-                    {role.metrics.map((metric) => (
-                      <Metric
-                        key={metric.label}
-                        from={metric.from}
-                        to={metric.to}
-                        caption={metric.label}
-                      />
-                    ))}
-                  </div>
-                )}
+                <aside className="flex max-w-[400px] flex-[1_1_280px] flex-col gap-6 border-l border-line pl-6 [&>*:not(:first-child)]:border-t [&>*:not(:first-child)]:border-line [&>*:not(:first-child)]:pt-5">
+                  {role.metrics && role.metrics.length > 0 && (
+                    <div>
+                      <p className="mb-3.5 font-mono text-xs font-medium tracking-[0.12em] text-signal">
+                        IMPACT
+                      </p>
+                      <div className="flex flex-col gap-3.5">
+                        {role.metrics.map((metric) => (
+                          <div
+                            key={metric.label}
+                            className="flex items-baseline justify-between gap-3"
+                          >
+                            <span className="font-mono text-xs text-muted">
+                              {metric.label}
+                            </span>
+                            <span className="font-mono text-sm text-ink">
+                              {metric.value}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {role.tech.map((item) => (
-                    <Tag key={item}>{item}</Tag>
-                  ))}
-                </div>
+                  {role.details && role.details.length > 0 && (
+                    <div>
+                      <p className="mb-3 font-mono text-xs font-medium tracking-[0.12em] text-muted">
+                        DETAILS
+                      </p>
+                      <div className="flex flex-col gap-2.5">
+                        {role.details.map((detail) => (
+                          <div
+                            key={detail.label}
+                            className="flex justify-between gap-3 font-mono text-xs text-muted"
+                          >
+                            <span>{detail.label}</span>
+                            <span className="text-ink">{detail.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div>
+                    <p className="mb-3 font-mono text-xs font-medium tracking-[0.12em] text-muted">
+                      STACK
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {role.tech.map((item) => (
+                        <Tag key={item}>{item}</Tag>
+                      ))}
+                    </div>
+                    {role.caseStudySlug && (
+                      <Link
+                        href={`/work/${role.caseStudySlug}`}
+                        className="mt-4 inline-block font-mono text-xs tracking-[0.08em] text-signal"
+                      >
+                        READ THE CASE STUDY ↗
+                      </Link>
+                    )}
+                  </div>
+                </aside>
               </div>
             )}
           </div>

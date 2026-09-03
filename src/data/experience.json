@@ -16,8 +16,14 @@
         "Migrated frontend architecture to modern reactive patterns and improved CI/CD with automated versioning and release monitoring"
       ],
       "metrics": [
-        { "from": "~2s", "to": "~1s", "label": "LCP after edge migration" },
-        { "from": "1×", "to": "~4×", "label": "subscription MRR after AI Studio" }
+        { "label": "LCP", "value": "~2s → ~1s" },
+        { "label": "Subscription MRR", "value": "~4×" },
+        { "label": "Hosting cost", "value": "−85%" },
+        { "label": "Purchase completion", "value": "+100%" }
+      ],
+      "details": [
+        { "label": "Setup", "value": "Remote" },
+        { "label": "Tenure", "value": "2 yr 9 mo" }
       ],
       "tech": [
         "Angular",
@@ -30,7 +36,8 @@
         "Cloudflare Workers",
         "PostHog",
         "Microservices"
-      ]
+      ],
+      "caseStudySlug": "coverr"
     },
     {
       "id": "artwizard",
@@ -43,6 +50,11 @@
         "Built and launched a web platform from scratch as sole developer, enabling users to discover and explore cultural events",
         "Collaborated with a designer to implement a reusable UI kit ensuring visual consistency across the application",
         "Extended backend APIs to support frontend functionality, contributing across the full stack"
+      ],
+      "details": [
+        { "label": "Team", "value": "Sole developer" },
+        { "label": "Setup", "value": "Remote" },
+        { "label": "Tenure", "value": "4 mo" }
       ],
       "tech": ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "UI Kit"]
     },
@@ -57,6 +69,11 @@
         "Completed an intensive full stack program covering frontend, backend, real-time systems and containerized environments",
         "Built applications with React, Express.js and Docker, including WebSocket real-time features and Jest-based automated testing"
       ],
+      "details": [
+        { "label": "Format", "value": "Academy program" },
+        { "label": "Setup", "value": "Remote" },
+        { "label": "Tenure", "value": "4 mo" }
+      ],
       "tech": ["React", "Express.js", "Docker", "WebSockets", "Jest"]
     },
     {
@@ -70,6 +87,11 @@
         "Completed a full-time internship under mentor supervision, working in a structured Agile workflow with Jira-based task management",
         "Contributed features across frontend, backend and admin panel of a full-stack web application",
         "Gained hands-on experience with code reviews, task planning and iterative delivery"
+      ],
+      "details": [
+        { "label": "Format", "value": "Internship" },
+        { "label": "Setup", "value": "On-site" },
+        { "label": "Tenure", "value": "5 mo" }
       ],
       "tech": ["Vue.js", "Laravel", "Laravel Nova", "Agile", "Jira"]
     }

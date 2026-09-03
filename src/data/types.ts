@@ -102,9 +102,15 @@ export interface Work {
 }
 
 export interface RoleMetric {
-  from: string;
-  to: string;
+  /** Short rail label, e.g. "LCP", "Hosting cost". */
   label: string;
+  /** Value shown at the row's right edge, e.g. "~2s → ~1s", "−85%". */
+  value: string;
+}
+
+export interface RoleDetail {
+  label: string;
+  value: string;
 }
 
 export interface Role {
@@ -116,8 +122,13 @@ export interface Role {
   /** Single-letter company mark. */
   badge: string;
   bullets: string[];
+  /** IMPACT block of the meta-rail — omitted when there are no figures. */
   metrics?: RoleMetric[];
+  /** DETAILS block of the meta-rail (team, setup, tenure…). */
+  details?: RoleDetail[];
   tech: string[];
+  /** `/work/[slug]` — renders the "read the case study" link in the rail. */
+  caseStudySlug?: string;
 }
 
 export interface Education {
