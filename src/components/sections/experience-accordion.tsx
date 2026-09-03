@@ -21,7 +21,9 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
             key={role.id}
             className={cn(
               "border-b border-l-2 border-line transition-colors",
-              isOpen ? "border-l-signal bg-surface" : "border-l-transparent",
+              isOpen
+                ? "border-l-signal bg-surface"
+                : "border-l-transparent hover:border-l-line",
             )}
           >
             <button
@@ -30,7 +32,10 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpenId(isOpen ? null : role.id)}
-              className="flex w-full flex-wrap items-baseline gap-x-5 gap-y-2 px-5 py-[22px] text-left"
+              className={cn(
+                "group flex w-full cursor-pointer flex-wrap items-baseline gap-x-5 gap-y-2 px-5 py-[22px] text-left transition-colors",
+                !isOpen && "hover:bg-surface",
+              )}
             >
               <span className="shrink-0 grow-0 basis-[170px] font-mono text-xs text-muted">
                 {role.period}
@@ -44,7 +49,12 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
                 </span>
                 {role.company} · {role.location}
               </span>
-              <span className="ml-auto font-mono text-sm text-muted">
+              <span
+                className={cn(
+                  "ml-auto font-mono text-sm text-muted transition-colors",
+                  !isOpen && "group-hover:text-ink",
+                )}
+              >
                 {isOpen ? "−" : "+"}
               </span>
             </button>

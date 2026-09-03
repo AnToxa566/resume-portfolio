@@ -7,7 +7,7 @@
   ],
   "cvHref": "/anton-bohachuk-cv.pdf",
   "hero": {
-    "status": "Open to work · Remote · Available from September 2026",
+    "status": "Open to work · Varna, Bulgaria · Remote or on-site",
     "headline": "Full stack engineer who ships and measures",
     "intro": "Three years building production web apps across frontend and backend — from architecture decisions through to deployment and monitoring. TypeScript across React/Next.js and Angular, NestJS services, and cloud infrastructure on GCP and Cloudflare.",
     "portraitLabel": "PORTRAIT — 4:5",
@@ -15,7 +15,7 @@
       { "value": "3", "caption": "years building production web apps" },
       { "value": "~4×", "caption": "subscription MRR after shipping AI Studio" },
       { "value": "~85%", "from": "Cloud Run", "to": "Workers", "caption": "hosting cost cut" },
-      { "value": "7+", "caption": "A/B experiments on conversion funnels" }
+      { "value": "10+", "caption": "A/B experiments on conversion funnels" }
     ]
   },
   "about": {

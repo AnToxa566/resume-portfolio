@@ -1,12 +1,11 @@
 {
   "featured": {
     "name": "Coverr",
-    "summary": "Stock media platform — AI generation, edge migration, and conversion experiments",
+    "summary": "Stock media platform for video creators, with an AI Studio for generating media on demand.",
     "image": "COVERR — PRODUCT SCREENSHOT",
-    "tech": ["Angular", "NestJS", "GCP", "Cloudflare Workers", "PostHog"],
+    "tech": ["Angular", "NestJS", "TypeORM", "PostgreSQL", "Nx", "GCP", "Cloudflare Workers", "PostHog"],
     "links": {
-      "live": "#",
-      "github": "#",
+      "live": "https://coverr.co",
       "caseStudy": "/work/coverr"
     }
   },
@@ -15,10 +14,9 @@
       "name": "ArtWizard",
       "summary": "Cultural events platform built from scratch as sole developer",
       "image": "ARTWIZARD — SCREENSHOT",
-      "tech": ["Next.js", "NestJS", "PostgreSQL"],
+      "tech": ["Next.js", "NestJS", "MongoDB"],
       "links": {
-        "live": "#",
-        "github": "#",
+        "live": "https://artwizard.io",
         "caseStudy": "/work/artwizard"
       }
     },
@@ -26,55 +24,55 @@
       "name": "Data Red Room",
       "summary": "Secure document data rooms with granular sharing permissions",
       "image": "DATA RED ROOM — SCREENSHOT",
-      "tech": ["Next.js", "NestJS", "Prisma", "Nx", "GCS"],
+      "tech": ["React", "NestJS", "PostgreSQL", "Prisma", "Nx", "GCS"],
       "links": {
-        "live": "#",
-        "github": "#",
+        "live": "https://data-red-room.vercel.app",
+        "github": "https://github.com/AnToxa566/data-room",
         "caseStudy": "/work/data-red-room"
       }
     },
     {
       "name": "Eliza Barber",
-      "summary": "Multilingual booking site across five locales with SEO-tuned routing",
+      "summary": "Marketing site for a barber, localized across five languages with SEO-tuned routing",
       "image": "ELIZA BARBER — SCREENSHOT",
-      "tech": ["Next.js 15", "Tailwind v4", "next-intl"],
+      "tech": ["Next.js", "Tailwind CSS", "next-intl"],
       "links": {
-        "live": "#",
-        "github": "#",
+        "live": "https://eliza-barber.com",
+        "github": "https://github.com/AnToxa566/liza-barber",
         "caseStudy": "/work/eliza-barber"
       }
     },
     {
       "name": "Insula",
       "summary": "Social network where autonomous AI agents post, comment and message",
-      "image": "INSULA — SCREENSHOT",
+      "image": "WORK IN PROGRESS",
       "status": "In progress",
-      "tech": ["Next.js", "NestJS", "Cloudflare Agents", "Redis"],
+      "tech": ["Next.js", "NestJS", "Nx", "Prisma", "PostgreSQL", "GCP", "Cloudflare Agents", "Redis"],
       "links": {
-        "github": "#",
+        "github": "https://github.com/AnToxa566/insula",
         "caseStudy": "/work/insula"
       }
     }
   ],
   "alsoShipped": [
     {
-      "name": "Vibe",
-      "summary": "Full-stack barbershop site with admin panel",
-      "tech": ["Next.js", "NestJS", "PostgreSQL"],
+      "name": "Rowdy",
+      "summary": "Barbershop site in three languages, with an admin panel",
+      "tech": ["Next.js", "NestJS", "Mongoose", "MongoDB"],
       "links": {
-        "live": "#",
-        "github": "#",
-        "caseStudy": "/work/vibe"
+        "live": "https://rowdy-barbershop.com",
+        "github": "https://github.com/AnToxa566/rowdy-vi",
+        "caseStudy": "/work/rowdy"
       }
     },
     {
-      "name": "Rowdy",
-      "summary": "Full-stack barbershop site with admin panel",
-      "tech": ["Next.js", "NestJS", "MongoDB"],
+      "name": "Vibe",
+      "summary": "Barbershop site for a two-location shop, with an admin panel",
+      "tech": ["Next.js", "NestJS", "TypeORM", "PostgreSQL"],
       "links": {
-        "live": "#",
-        "github": "#",
-        "caseStudy": "/work/rowdy"
+        "live": "https://vibe-barbershop.com.ua",
+        "github": "https://github.com/AnToxa566/vibe",
+        "caseStudy": "/work/vibe"
       }
     }
   ]
