@@ -119,8 +119,10 @@ export interface Role {
   title: string;
   company: string;
   location: string;
-  /** Single-letter company mark. */
-  badge: string;
+  /** Company site — wraps the logo + name as a link in the accordion header. */
+  companyHref: string;
+  /** Company logo, e.g. "/images/coverr-logo.jpg". */
+  logo: string;
   bullets: string[];
   /** IMPACT block of the meta-rail — omitted when there are no figures. */
   metrics?: RoleMetric[];

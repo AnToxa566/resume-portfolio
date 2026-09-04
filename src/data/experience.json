@@ -6,7 +6,8 @@
       "title": "Middle Full Stack Engineer",
       "company": "Coverr",
       "location": "Remote",
-      "badge": "C",
+      "companyHref": "https://coverr.co/",
+      "logo": "/images/coverr-logo.jpg",
       "bullets": [
         "Owned features end-to-end on an Angular and NestJS microservice architecture — from architecture decisions through deployment and monitoring",
         "Built and launched a subscription-based AI Studio feature integrating image, video and audio generation services, contributing to ~4× growth in subscription MRR",
@@ -45,7 +46,8 @@
       "title": "Junior Full Stack Engineer",
       "company": "ArtWizard",
       "location": "Remote",
-      "badge": "A",
+      "companyHref": "https://artwizard.io/",
+      "logo": "/images/artwizard-logo.jpg",
       "bullets": [
         "Built and launched a web platform from scratch as sole developer, enabling users to discover and explore cultural events",
         "Collaborated with a designer to implement a reusable UI kit ensuring visual consistency across the application",
@@ -64,7 +66,8 @@
       "title": "Student Full Stack Engineer",
       "company": "Binary Studio Academy",
       "location": "Remote",
-      "badge": "B",
+      "companyHref": "https://academy.binary-studio.com/",
+      "logo": "/images/binary-studio-academy-logo.jpg",
       "bullets": [
         "Completed an intensive full stack program covering frontend, backend, real-time systems and containerized environments",
         "Built applications with React, Express.js and Docker, including WebSocket real-time features and Jest-based automated testing"
@@ -82,7 +85,8 @@
       "title": "Intern Full Stack Engineer",
       "company": "GroupBWT",
       "location": "Zaporizhzhia, Ukraine",
-      "badge": "G",
+      "companyHref": "https://groupbwt.com/",
+      "logo": "/images/groupbwt_logo.jpg",
       "bullets": [
         "Completed a full-time internship under mentor supervision, working in a structured Agile workflow with Jira-based task management",
         "Contributed features across frontend, backend and admin panel of a full-stack web application",

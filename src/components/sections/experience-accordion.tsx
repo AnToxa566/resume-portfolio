@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Role } from "@/data";
 import { Tag } from "@/components/ui/tag";
@@ -43,11 +44,25 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
               <span className="grow basis-[240px] font-medium text-ink">
                 {role.title}
               </span>
-              <span className="flex items-center gap-2.5 text-sm text-muted">
-                <span className="flex size-5 items-center justify-center rounded border border-line font-mono text-[10px] text-muted">
-                  {role.badge}
-                </span>
-                {role.company} · {role.location}
+              <span className="flex flex-none items-center gap-2 whitespace-nowrap text-sm text-muted">
+                <a
+                  href={role.companyHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  onClick={(event) => event.stopPropagation()}
+                  className="inline-flex items-center gap-2.5 rounded text-muted transition-colors hover:text-ink"
+                >
+                  <Image
+                    src={role.logo}
+                    alt={`${role.company} logo`}
+                    width={20}
+                    height={20}
+                    className="size-5 flex-none rounded border border-line object-cover"
+                  />
+                  {role.company}
+                </a>
+                <span>·</span>
+                <span>{role.location}</span>
               </span>
               <span
                 className={cn(
