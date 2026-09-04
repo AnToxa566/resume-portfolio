@@ -11,7 +11,7 @@
       "bullets": [
         "Owned features end-to-end on an Angular and NestJS microservice architecture — from architecture decisions through deployment and monitoring",
         "Built and launched a subscription-based AI Studio feature integrating image, video and audio generation services, contributing to ~4× growth in subscription MRR",
-        "Built product analytics dashboards and ran 7+ A/B experiments on conversion funnels using PostHog feature flags — best results included a 100% improvement in purchase completion and 80% increase in checkout initiation",
+        "Built product analytics dashboards and ran 10+ A/B experiments on conversion funnels using PostHog feature flags — best results included a 100% improvement in purchase completion and 80% increase in checkout initiation",
         "Contributed to infrastructure migration from GCP Cloud Run to Cloudflare Workers, cutting hosting costs ~85% and improving LCP from ~2s to ~1s",
         "Designed a scalable localization system supporting 7 languages with automated content translation",
         "Migrated frontend architecture to modern reactive patterns and improved CI/CD with automated versioning and release monitoring"
@@ -23,15 +23,18 @@
         { "label": "Purchase completion", "value": "+100%" }
       ],
       "details": [
+        { "label": "Team", "value": "2 engineers" },
         { "label": "Setup", "value": "Remote" },
         { "label": "Tenure", "value": "2 yr 9 mo" }
       ],
       "tech": [
         "Angular",
         "NestJS",
+        "Nx",
         "TypeScript",
         "RxJS",
         "NGXS",
+        "TypeORM",
         "PostgreSQL",
         "GCP",
         "Cloudflare Workers",
@@ -58,7 +61,8 @@
         { "label": "Setup", "value": "Remote" },
         { "label": "Tenure", "value": "4 mo" }
       ],
-      "tech": ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "UI Kit"]
+      "tech": ["Next.js", "NestJS", "Nx", "TypeScript", "MongoDB", "UI Kit"],
+      "caseStudySlug": "artwizard"
     },
     {
       "id": "binary-studio",
@@ -97,7 +101,7 @@
         { "label": "Setup", "value": "On-site" },
         { "label": "Tenure", "value": "5 mo" }
       ],
-      "tech": ["Vue.js", "Laravel", "Laravel Nova", "Agile", "Jira"]
+      "tech": ["Vue.js", "Laravel", "Laravel Nova", "PHP", "Agile", "Jira"]
     }
   ],
   "education": {
