@@ -24,7 +24,10 @@ export function Contact() {
 
       <div className="mt-8 flex flex-wrap justify-between gap-4 font-mono text-xs text-muted">
         <span>{contact.footerLeft}</span>
-        <span>{contact.footerRight}</span>
+
+        <span>
+          {contact.footerRight.replace("{year}", String(new Date().getFullYear()))}
+        </span>
       </div>
     </Section>
   );

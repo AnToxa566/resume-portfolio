@@ -24,15 +24,15 @@
     "linkLabel": "More about how I work"
   },
   "contact": {
-    "heading": "Available from September 2026",
-    "blurb": "Open to remote full stack roles. The fastest way to reach me is email or Telegram.",
+    "heading": "Let's talk",
+    "blurb": "Open to full stack roles, remote or on-site in Varna. The fastest way to reach me is email or Telegram.",
     "links": [
       { "label": "LinkedIn", "value": "/in/anton-bohachuk", "href": "https://www.linkedin.com/in/anton-bohachuk" },
-      { "label": "GitHub", "value": "@antonbohachuk", "href": "https://github.com/antonbohachuk" },
-      { "label": "Email", "value": "anton.bohachuk@gmail.com", "href": "mailto:anton.bohachuk@gmail.com" },
-      { "label": "Telegram", "value": "@antonbohachuk", "href": "https://t.me/antonbohachuk" }
+      { "label": "GitHub", "value": "@AnToxa566", "href": "https://github.com/AnToxa566" },
+      { "label": "Email", "value": "bogachuk566@gmail.com", "href": "mailto:bogachuk566@gmail.com" },
+      { "label": "Telegram", "value": "@Antonio_Bog", "href": "https://t.me/Antonio_Bog" }
     ],
     "footerLeft": "ANTON BOHACHUK · VARNA, BULGARIA (EET)",
-    "footerRight": "© 2026"
+    "footerRight": "© {year}"
   }
 }
