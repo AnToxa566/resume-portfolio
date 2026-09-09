@@ -40,10 +40,10 @@ export function CaseStudyIntro({ study }: { study: CaseStudy }) {
         {(study.links.live || study.links.code) && (
           <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:180ms]">
             {study.links.live && (
-              <ButtonLink href={study.links.live}>View live</ButtonLink>
+              <ButtonLink target="_blank" href={study.links.live}>View live</ButtonLink>
             )}
             {study.links.code && (
-              <ButtonLink href={study.links.code} variant="outline">
+              <ButtonLink target="_blank" href={study.links.code} variant="outline">
                 View code
               </ButtonLink>
             )}

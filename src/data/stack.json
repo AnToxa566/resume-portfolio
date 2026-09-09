@@ -9,7 +9,9 @@
       "Angular",
       "RxJS",
       "NGXS",
-      "Tailwind CSS"
+      "Redux",
+      "Tailwind CSS",
+      "next-intl"
     ]
   },
   {
@@ -19,25 +21,31 @@
       "NestJS",
       "TypeORM",
       "Prisma",
+      "Mongoose",
       "PostgreSQL",
       "MongoDB",
-      "REST APIs"
+      "Redis",
+      "REST APIs",
+      "WebSockets",
+      "Socket.io"
     ]
   },
   {
     "category": "Infrastructure",
     "items": [
       "GCP",
-      "Cloudflare Workers",
-      "Cloudflare CDN",
+      "Cloud Run",
+      "Cloud Storage",
+      "Pub/Sub",
+      "Cloudflare",
       "Vercel",
+      "Supabase",
       "Docker",
-      "GitHub Actions",
-      "Nx"
+      "GitHub Actions"
     ]
   },
   {
-    "category": "Practice",
-    "items": ["Git", "Figma", "PostHog", "Jest", "Microservices", "CI/CD"]
+    "category": "Architecture & Practice",
+    "items": ["Nx", "Monorepo", "Microservices", "CI/CD", "Git", "Zod", "Jest", "PostHog"]
   }
 ]

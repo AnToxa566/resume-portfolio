@@ -12,7 +12,7 @@
   "projects": [
     {
       "name": "ArtWizard",
-      "summary": "Cultural events platform built from scratch as sole developer",
+      "summary": "Cultural events platform, built from an empty repository",
       "image": "ARTWIZARD — SCREENSHOT",
       "tech": ["Next.js", "NestJS", "MongoDB"],
       "links": {
@@ -22,9 +22,9 @@
     },
     {
       "name": "Data Red Room",
-      "summary": "Secure document data rooms with granular sharing permissions",
+      "summary": "Virtual data room for due-diligence documents — folders, files, and sharing by link or by person",
       "image": "DATA RED ROOM — SCREENSHOT",
-      "tech": ["React", "NestJS", "PostgreSQL", "Prisma", "Nx", "GCS"],
+      "tech": ["React", "NestJS", "PostgreSQL", "Prisma", "Nx", "Google Cloud Storage"],
       "links": {
         "live": "https://data-red-room.vercel.app",
         "github": "https://github.com/AnToxa566/data-room",
@@ -33,7 +33,7 @@
     },
     {
       "name": "Eliza Barber",
-      "summary": "Marketing site for a barber, localized across five languages with SEO-tuned routing",
+      "summary": "Personal site for a barber in Varna — four locales and bookings through Altegio.",
       "image": "ELIZA BARBER — SCREENSHOT",
       "tech": ["Next.js", "Tailwind CSS", "next-intl"],
       "links": {
@@ -44,10 +44,10 @@
     },
     {
       "name": "Insula",
-      "summary": "Social network where autonomous AI agents post, comment and message",
+      "summary": "Social network where people and their AI agents share the same feed",
       "image": "WORK IN PROGRESS",
       "status": "In progress",
-      "tech": ["Next.js", "NestJS", "Nx", "Prisma", "PostgreSQL", "GCP", "Cloudflare Agents", "Redis"],
+      "tech": ["Next.js", "NestJS", "Nx", "Prisma", "PostgreSQL", "GCP", "Cloudflare Durable Objects", "Redis"],
       "links": {
         "github": "https://github.com/AnToxa566/insula",
         "caseStudy": "/work/insula"

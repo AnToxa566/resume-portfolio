@@ -23,20 +23,22 @@
         { "label": "Purchase completion", "value": "+100%" }
       ],
       "details": [
-        { "label": "Team", "value": "2 engineers" },
+        { "label": "Team", "value": "6 people" },
         { "label": "Setup", "value": "Remote" },
         { "label": "Tenure", "value": "2 yr 9 mo" }
       ],
       "tech": [
-        "Angular",
-        "NestJS",
-        "Nx",
         "TypeScript",
-        "RxJS",
+        "Angular",
         "NGXS",
+        "RxJS",
+        "Nx",
+        "NestJS",
         "TypeORM",
         "PostgreSQL",
+        "Redis",
         "GCP",
+        "Pub/Sub",
         "Cloudflare Workers",
         "PostHog",
         "Microservices"
@@ -49,7 +51,7 @@
       "title": "Junior Full Stack Engineer",
       "company": "ArtWizard",
       "location": "Remote",
-      "companyHref": "https://artwizard.io/",
+      "companyHref": "https://artwizard.io",
       "logo": "/images/artwizard-logo.jpg",
       "bullets": [
         "Built and launched a web platform from scratch as sole developer, enabling users to discover and explore cultural events",
@@ -57,11 +59,11 @@
         "Extended backend APIs to support frontend functionality, contributing across the full stack"
       ],
       "details": [
-        { "label": "Team", "value": "Sole developer" },
+        { "label": "Team", "value": "4 people" },
         { "label": "Setup", "value": "Remote" },
         { "label": "Tenure", "value": "4 mo" }
       ],
-      "tech": ["Next.js", "NestJS", "Nx", "TypeScript", "MongoDB", "UI Kit"],
+      "tech": ["TypeScript", "Next.js", "Redux", "Tailwind CSS", "NestJS", "MongoDB", "Mongoose", "Vercel"],
       "caseStudySlug": "artwizard"
     },
     {
