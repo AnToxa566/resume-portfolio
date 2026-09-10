@@ -1,5 +1,6 @@
 import { profileData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
+import { DownloadCvButton } from "@/components/download-cv-button";
 import { Metric } from "@/components/ui/metric";
 import { Placeholder } from "@/components/ui/placeholder";
 
@@ -25,9 +26,7 @@ export function Hero() {
 
           <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:180ms]">
             <ButtonLink href="#contact">Get in touch</ButtonLink>
-            <ButtonLink href={profileData.cvHref} variant="outline">
-              Download CV
-            </ButtonLink>
+            <DownloadCvButton />
           </div>
         </div>
 

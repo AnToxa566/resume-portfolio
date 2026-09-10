@@ -8,8 +8,8 @@ import { cn } from "@/lib/cn";
 
 import { profileData } from "@/data";
 
-import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { DownloadCvButton } from "@/components/download-cv-button";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,9 +52,7 @@ export function SiteHeader() {
             ))}
           </span>
 
-          <ButtonLink href={profileData.cvHref} variant="outline" size="sm">
-            Download CV
-          </ButtonLink>
+          <DownloadCvButton size="sm" />
         </nav>
       </Container>
     </header>

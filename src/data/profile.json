@@ -5,7 +5,7 @@
     { "label": "About", "href": "/about" },
     { "label": "Contact", "href": "#contact" }
   ],
-  "cvHref": "/anton-bohachuk-cv.pdf",
+  "cvHref": "https://drive.google.com/file/d/1xG9omwBR0hcgrUZeUKe1xnYOa0sLe8OC/view?usp=sharing",
   "hero": {
     "status": "Open to work · Varna, Bulgaria · Remote or on-site",
     "headline": "Full stack engineer who ships and measures",

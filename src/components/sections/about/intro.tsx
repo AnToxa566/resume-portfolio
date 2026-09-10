@@ -1,5 +1,6 @@
-import { aboutData, profileData } from "@/data";
+import { aboutData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
+import { DownloadCvButton } from "@/components/download-cv-button";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
 
@@ -30,9 +31,7 @@ export function AboutIntro() {
 
           <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:180ms]">
             <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
-            <ButtonLink href={profileData.cvHref} variant="outline">
-              Download CV
-            </ButtonLink>
+            <DownloadCvButton />
           </div>
         </div>
 
