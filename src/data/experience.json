@@ -25,7 +25,7 @@
       "details": [
         { "label": "Team", "value": "6 people" },
         { "label": "Setup", "value": "Remote" },
-        { "label": "Tenure", "value": "2 yr 9 mo" }
+        { "label": "Tenure", "value": { "start": "2023-12" } }
       ],
       "tech": [
         "TypeScript",

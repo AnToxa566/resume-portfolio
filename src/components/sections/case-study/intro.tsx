@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { CaseStudy } from "@/data";
+import { formatDurationLong } from "@/lib/duration";
 import { ButtonLink } from "@/components/ui/button";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -15,7 +16,7 @@ export function CaseStudyIntro({ study }: { study: CaseStudy }) {
     { label: "Role", value: study.meta.role },
     { label: "Type", value: study.meta.type },
     { label: "Year", value: study.meta.year },
-    { label: "Duration", value: study.meta.duration },
+    { label: "Duration", value: formatDurationLong(study.meta.duration) },
     { label: "Team", value: study.meta.team },
   ];
 

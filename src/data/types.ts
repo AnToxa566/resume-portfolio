@@ -1,5 +1,7 @@
 // Shapes for the JSON data files in this directory.
 
+import type { DurationValue } from "@/lib/duration";
+
 export interface ProjectLinks {
   live?: string;
   github?: string;
@@ -32,7 +34,8 @@ export interface CaseStudyMeta {
   role: string;
   type: string;
   year: string;
-  duration: string;
+  /** Fixed string, or a `{ start, end? }` range formatted at render time. */
+  duration: DurationValue;
   team: string;
 }
 
@@ -110,7 +113,8 @@ export interface RoleMetric {
 
 export interface RoleDetail {
   label: string;
-  value: string;
+  /** Fixed string, or a `{ start, end? }` range formatted at render time. */
+  value: DurationValue;
 }
 
 export interface Role {

@@ -11,7 +11,7 @@
       "role": "Full Stack Engineer",
       "type": "Product",
       "year": "2023 — Present",
-      "duration": "2 years 9 months",
+      "duration": { "start": "2023-12" },
       "team": "6 people"
     },
     "context": [

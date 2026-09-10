@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { Role } from "@/data";
 import { Tag } from "@/components/ui/tag";
 import { cn } from "@/lib/cn";
+import { formatDurationShort } from "@/lib/duration";
 
 export function ExperienceAccordion({ roles }: { roles: Role[] }) {
   const [openId, setOpenId] = useState<string | null>(roles[0]?.id ?? null);
@@ -123,7 +124,9 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
                             className="flex justify-between gap-3 font-mono text-xs text-muted"
                           >
                             <span>{detail.label}</span>
-                            <span className="text-ink">{detail.value}</span>
+                            <span className="text-ink">
+                              {formatDurationShort(detail.value)}
+                            </span>
                           </div>
                         ))}
                       </div>
