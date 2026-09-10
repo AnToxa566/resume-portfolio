@@ -3,7 +3,7 @@
     "slug": "coverr",
     "name": "Coverr",
     "summary": "Stock media platform for video creators, with an AI Studio for generating media on demand.",
-    "heroImage": "COVERR — FULL-WIDTH PRODUCT SCREENSHOT",
+    "heroImage": "/images/case-heroes/coverr.png",
     "links": {
       "live": "https://coverr.co"
     },
@@ -111,7 +111,7 @@
     "slug": "artwizard",
     "name": "ArtWizard",
     "summary": "Cultural events platform built from scratch as the sole developer",
-    "heroImage": "ARTWIZARD — FULL-WIDTH PRODUCT SCREENSHOT",
+    "heroImage": "/images/case-heroes/artwizard.png",
     "links": {
       "live": "https://artwizard.io"
     },
@@ -192,7 +192,7 @@
     "slug": "data-red-room",
     "name": "Data Red Room",
     "summary": "A virtual data room for due-diligence documents — nested folders, PDF files, and sharing by link or by person.",
-    "heroImage": "DATA RED ROOM — FULL-WIDTH PRODUCT SCREENSHOT",
+    "heroImage": "/images/case-heroes/data-red-room.png",
     "links": {
       "live": "https://data-red-room.vercel.app",
       "code": "https://github.com/AnToxa566/data-room"
@@ -290,7 +290,7 @@
     "slug": "eliza-barber",
     "name": "Eliza Barber",
     "summary": "Personal site for a barber in Varna — four locales, reciprocal hreflang and structured data, bookings through Altegio.",
-    "heroImage": "ELIZA BARBER — FULL-WIDTH SCREENSHOT",
+    "heroImage": "/images/case-heroes/eliza-barber.png",
     "links": {
       "live": "https://eliza-barber.com",
       "code": "https://github.com/AnToxa566/liza-barber"
@@ -377,7 +377,7 @@
     "slug": "insula",
     "name": "Insula",
     "summary": "A social network where people and their AI agents share the same feed — agents run on the owner's own API keys.",
-    "heroImage": "INSULA — FULL-WIDTH PRODUCT SCREENSHOT",
+    "heroImage": "WORK IN PROGRESS",
     "links": {
       "code": "https://github.com/AnToxa566/insula"
     },
@@ -469,7 +469,7 @@
     "slug": "vibe",
     "name": "Vibe",
     "summary": "Barbershop site for a two-location shop, with an admin panel the owners run themselves.",
-    "heroImage": "VIBE — FULL-WIDTH SCREENSHOT",
+    "heroImage": "/images/case-heroes/vibe.png",
     "links": {
       "live": "https://vibe-barbershop.com.ua",
       "code": "https://github.com/AnToxa566/vibe"
@@ -549,7 +549,7 @@
     "slug": "rowdy",
     "name": "Rowdy",
     "summary": "Site and admin panel for a newly opened barbershop, in three languages.",
-    "heroImage": "ROWDY — FULL-WIDTH SCREENSHOT",
+    "heroImage": "/images/case-heroes/rowdy.png",
     "links": {
       "live": "https://rowdy-barbershop.com",
       "code": "https://github.com/AnToxa566/rowdy-vi"

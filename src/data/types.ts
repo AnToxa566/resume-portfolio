@@ -11,8 +11,12 @@ export interface ProjectLinks {
 export interface Project {
   name: string;
   summary: string;
-  /** Placeholder label shown in the image slot until a real asset exists. */
-  image: string;
+  /**
+   * Image slot. A URL or root-relative path (`/images/…`, `https://…`) renders
+   * as a real `<Image>`; any other string is shown as a placeholder label;
+   * omitted falls back to a placeholder labelled with the project name.
+   */
+  image?: string;
   tech: string[];
   links: ProjectLinks;
   /** e.g. "In progress" — renders as an accent badge. */
@@ -86,8 +90,12 @@ export interface CaseStudy {
   slug: string;
   name: string;
   summary: string;
-  /** Placeholder label for the hero image slot. */
-  heroImage: string;
+  /**
+   * Hero image slot. A URL or root-relative path (`/images/…`, `https://…`)
+   * renders as a real `<Image>`; any other string shows as a placeholder label;
+   * omitted falls back to a placeholder labelled with the case study name.
+   */
+  heroImage?: string;
   links: { live?: string; code?: string };
   meta: CaseStudyMeta;
   context: string[];
@@ -125,7 +133,7 @@ export interface Role {
   location: string;
   /** Company site — wraps the logo + name as a link in the accordion header. */
   companyHref: string;
-  /** Company logo, e.g. "/images/coverr-logo.jpg". */
+  /** Company logo, e.g. "/images/logos/coverr-logo.jpg". */
   logo: string;
   bullets: string[];
   /** IMPACT block of the meta-rail — omitted when there are no figures. */

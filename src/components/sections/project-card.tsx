@@ -1,8 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { Project } from "@/data";
-import { Placeholder } from "@/components/ui/placeholder";
-import { Tag } from "@/components/ui/tag";
+
 import { cn } from "@/lib/cn";
+import { isImageSrc } from "@/lib/image";
+import type { Project } from "@/data";
+
+import { Tag } from "@/components/ui/tag";
+import { Placeholder } from "@/components/ui/placeholder";
+
 import { ProjectLinkRow } from "./project-links";
 
 const cardClass =
@@ -18,23 +23,53 @@ function TechRow({ tech, className }: { tech: string[]; className?: string }) {
   );
 }
 
-function CardImage({ project }: { project: Project }) {
-  const image = (
+function CardImage({
+  project,
+  variant,
+}: {
+  project: Project;
+  variant: "featured" | "compact";
+}) {
+  const interactive = Boolean(project.links.caseStudy);
+
+  const media = isImageSrc(project.image) ? (
+    <div
+      className={cn(
+        "relative w-full overflow-hidden rounded-lg border border-line",
+        // Compact cards keep the 16/10 slot. The full-width featured card would
+        // run taller than the viewport at that ratio, so it gets a fixed,
+        // clamped height instead and lets `object-cover` crop — still edge to edge.
+        variant === "featured"
+          ? "h-[clamp(220px,40vw,460px)]"
+          : "aspect-[16/10]",
+        interactive &&
+          "brightness-90 transition-[filter,transform] duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:brightness-100",
+      )}
+    >
+      <Image
+        fill
+        alt={project.name}
+        src={project.image}
+        className="object-cover"
+        sizes="(min-width: 880px) 720px, 100vw"
+      />
+    </div>
+  ) : (
     <Placeholder
       ratio="16/10"
-      label={project.image}
-      interactive={Boolean(project.links.caseStudy)}
+      label={project.image ?? project.name}
+      interactive={interactive}
     />
   );
 
-  if (!project.links.caseStudy) return image;
+  if (!project.links.caseStudy) return media;
 
   return (
     <Link
       href={project.links.caseStudy}
       className="group block overflow-hidden rounded-lg"
     >
-      {image}
+      {media}
     </Link>
   );
 }
@@ -55,7 +90,7 @@ export function ProjectCard({
   if (variant === "featured") {
     return (
       <article className={cardClass}>
-        <CardImage project={project} />
+        <CardImage project={project} variant={variant} />
         <div className="mt-6 flex flex-wrap items-start justify-between gap-6 px-2 pb-2">
           <div className="min-w-0 flex-1 basis-[380px]">
             <h3 className="text-[28px] leading-[1.15] display">{title}</h3>
@@ -72,7 +107,7 @@ export function ProjectCard({
 
   return (
     <article className={cardClass}>
-      <CardImage project={project} />
+      <CardImage project={project} variant={variant} />
       <div className="px-2 pb-2 pt-5">
         <div className="flex items-baseline justify-between gap-4">
           <div className="flex items-center gap-3">

@@ -1,10 +1,11 @@
 import { cn } from "@/lib/cn";
 
-type Ratio = "4/5" | "4/3" | "16/10" | "21/9";
+type Ratio = "4/5" | "4/3" | "16/10" | "16/9" | "21/9";
 
 const ratioClass: Record<Ratio, string> = {
   "4/5": "aspect-[4/5]",
   "4/3": "aspect-[4/3]",
+  "16/9": "aspect-[16/9]",
   "16/10": "aspect-[16/10]",
   "21/9": "aspect-[21/9]",
 };

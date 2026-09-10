@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import type { CaseStudy } from "@/data";
+import { isImageSrc } from "@/lib/image";
 import { Reveal } from "@/components/reveal";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -29,11 +31,23 @@ export function CaseStudyNext({ study }: { study: CaseStudy }) {
             </div>
 
             <div className="flex-[0_1_320px] min-w-[220px]">
-              <Placeholder
-                ratio="16/10"
-                label={`${study.name.toUpperCase()} — SCREENSHOT`}
-                interactive
-              />
+              {isImageSrc(study.heroImage) ? (
+                <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-line brightness-90 transition-[filter,transform] duration-[250ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02] group-hover:brightness-100">
+                  <Image
+                    fill
+                    alt={study.name}
+                    src={study.heroImage}
+                    sizes="320px"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <Placeholder
+                  interactive
+                  ratio="16/9"
+                  label={study.name.toUpperCase()}
+                />
+              )}
             </div>
           </div>
         </Link>

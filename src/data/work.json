@@ -2,7 +2,7 @@
   "featured": {
     "name": "Coverr",
     "summary": "Stock media platform for video creators, with an AI Studio for generating media on demand.",
-    "image": "COVERR — PRODUCT SCREENSHOT",
+    "image": "/images/work-thumbnails/coverr-preview.jpg",
     "tech": ["Angular", "NestJS", "TypeORM", "PostgreSQL", "Nx", "GCP", "Cloudflare Workers", "PostHog"],
     "links": {
       "live": "https://coverr.co",
@@ -13,7 +13,7 @@
     {
       "name": "ArtWizard",
       "summary": "Cultural events platform, built from an empty repository",
-      "image": "ARTWIZARD — SCREENSHOT",
+      "image": "/images/work-thumbnails/artwizard-preview.jpg",
       "tech": ["Next.js", "NestJS", "MongoDB"],
       "links": {
         "live": "https://artwizard.io",
@@ -23,7 +23,7 @@
     {
       "name": "Data Red Room",
       "summary": "Virtual data room for due-diligence documents — folders, files, and sharing by link or by person",
-      "image": "DATA RED ROOM — SCREENSHOT",
+      "image": "/images/work-thumbnails/data-red-room-preview.jpg",
       "tech": ["React", "NestJS", "PostgreSQL", "Prisma", "Nx", "Google Cloud Storage"],
       "links": {
         "live": "https://data-red-room.vercel.app",
@@ -34,7 +34,7 @@
     {
       "name": "Eliza Barber",
       "summary": "Personal site for a barber in Varna — four locales and bookings through Altegio.",
-      "image": "ELIZA BARBER — SCREENSHOT",
+      "image": "/images/work-thumbnails/eliza-barber-preview.png",
       "tech": ["Next.js", "Tailwind CSS", "next-intl"],
       "links": {
         "live": "https://eliza-barber.com",

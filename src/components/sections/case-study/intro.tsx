@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import type { CaseStudy } from "@/data";
 import { formatDurationLong } from "@/lib/duration";
+import { isImageSrc } from "@/lib/image";
 import { ButtonLink } from "@/components/ui/button";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
@@ -62,7 +64,20 @@ export function CaseStudyIntro({ study }: { study: CaseStudy }) {
       </section>
 
       <div className="mt-[clamp(2rem,5vw,3rem)] animate-rise [animation-delay:300ms]">
-        <Placeholder ratio="16/10" label={study.heroImage} />
+        {isImageSrc(study.heroImage) ? (
+          <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-line">
+            <Image
+              src={study.heroImage}
+              alt={study.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 960px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <Placeholder ratio="16/9" label={study.heroImage ?? study.name} />
+        )}
       </div>
     </>
   );
