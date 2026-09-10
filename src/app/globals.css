@@ -28,6 +28,24 @@
     var(--surface) 0 12px,
     var(--surface-2) 12px 24px
   );
+
+  /* Full-bleed hairline grid + fade mask sitting behind each page's hero. */
+  --hero-grid: repeating-linear-gradient(
+      to right,
+      color-mix(in srgb, var(--line) 60%, transparent) 0 1px,
+      transparent 1px 72px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--line) 60%, transparent) 0 1px,
+      transparent 1px 72px
+    );
+  --hero-grid-mask: radial-gradient(
+    120% 100% at 20% 0%,
+    #000 0%,
+    rgba(0, 0, 0, 0.35) 55%,
+    transparent 85%
+  );
 }
 
 @theme inline {
@@ -49,6 +67,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Contain the hero grid's 100vw breakout so it can't add a scrollbar. */
+    overflow-x: hidden;
   }
 
   body {

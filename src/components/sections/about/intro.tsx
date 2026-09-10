@@ -1,6 +1,7 @@
 import { aboutData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
 import { DownloadCvButton } from "@/components/download-cv-button";
+import { HeroGrid } from "@/components/ui/hero-grid";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
 
@@ -9,7 +10,8 @@ export function AboutIntro() {
 
   return (
     <>
-      <section className="flex flex-wrap items-start gap-[clamp(2rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)]">
+      <section className="relative isolate flex flex-wrap items-start gap-[clamp(2rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)]">
+        <HeroGrid />
         <div className="min-w-0 flex-1 basis-[460px]">
           <p className="flex animate-rise items-center gap-2.5 font-mono text-xs tracking-[0.12em] text-muted">
             <span className="size-1.5 flex-none rounded-full bg-signal" />

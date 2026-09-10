@@ -5,6 +5,7 @@ import type { CaseStudy } from "@/data";
 import { formatDurationLong } from "@/lib/duration";
 import { isImageSrc } from "@/lib/image";
 import { ButtonLink } from "@/components/ui/button";
+import { HeroGrid } from "@/components/ui/hero-grid";
 import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
 
@@ -24,7 +25,8 @@ export function CaseStudyIntro({ study }: { study: CaseStudy }) {
 
   return (
     <>
-      <section className="pt-[clamp(3rem,7vw,5rem)] pb-[clamp(2rem,5vw,3rem)]">
+      <section className="relative isolate pt-[clamp(3rem,7vw,5rem)] pb-[clamp(2rem,5vw,3rem)]">
+        <HeroGrid />
         <Link
           href="/#work"
           className="inline-block animate-rise font-mono text-xs tracking-[0.12em] text-muted transition-colors hover:text-ink"

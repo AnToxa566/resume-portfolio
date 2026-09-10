@@ -1,6 +1,7 @@
 import { profileData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
 import { DownloadCvButton } from "@/components/download-cv-button";
+import { HeroGrid } from "@/components/ui/hero-grid";
 import { Metric } from "@/components/ui/metric";
 import { Placeholder } from "@/components/ui/placeholder";
 
@@ -9,7 +10,8 @@ export function Hero() {
 
   return (
     <>
-      <section className="grid grid-cols-1 items-center gap-[clamp(2.5rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)] min-[880px]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.75fr)]">
+      <section className="relative isolate grid grid-cols-1 items-center gap-[clamp(2.5rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)] min-[880px]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.75fr)]">
+        <HeroGrid />
         <div>
           <p className="flex animate-rise items-center gap-2.5 font-mono text-xs tracking-[0.12em] text-muted">
             <span className="size-1.5 flex-none rounded-full bg-signal" />
