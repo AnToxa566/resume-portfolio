@@ -1,9 +1,10 @@
+import Image from "next/image";
+
 import { profileData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
 import { DownloadCvButton } from "@/components/download-cv-button";
 import { HeroGrid } from "@/components/ui/hero-grid";
 import { Metric } from "@/components/ui/metric";
-import { Placeholder } from "@/components/ui/placeholder";
 
 export function Hero() {
   const { hero } = profileData;
@@ -32,8 +33,15 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="animate-rise [animation-delay:220ms]">
-          <Placeholder ratio="4/5" align="start" label={hero.portraitLabel} />
+        <div className="relative aspect-[4/5] animate-rise overflow-hidden rounded-lg border border-line [animation-delay:220ms]">
+          <Image
+            fill
+            priority
+            src={hero.portraitImage}
+            className="object-cover"
+            alt={`Portrait of ${profileData.name}`}
+            sizes="(min-width: 880px) 420px, 100vw"
+          />
         </div>
       </section>
 

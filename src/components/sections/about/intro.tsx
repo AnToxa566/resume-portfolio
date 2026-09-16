@@ -1,12 +1,13 @@
-import { aboutData } from "@/data";
+import Image from "next/image";
+
+import { aboutData, profileData } from "@/data";
 import { ButtonLink } from "@/components/ui/button";
 import { DownloadCvButton } from "@/components/download-cv-button";
 import { HeroGrid } from "@/components/ui/hero-grid";
-import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
 
 export function AboutIntro() {
-  const { label, headline, intro, portraitLabel, cta, facts } = aboutData;
+  const { label, headline, intro, portraitImage, cta, facts } = aboutData;
 
   return (
     <>
@@ -37,8 +38,15 @@ export function AboutIntro() {
           </div>
         </div>
 
-        <div className="animate-rise basis-[400px] min-w-[260px] grow-0 [animation-delay:220ms]">
-          <Placeholder ratio="4/5" label={portraitLabel} />
+        <div className="relative aspect-[4/5] animate-rise basis-[400px] min-w-[260px] grow-0 overflow-hidden rounded-lg border border-line [animation-delay:220ms]">
+          <Image
+            fill
+            priority
+            src={portraitImage}
+            className="object-cover"
+            alt={`Portrait of ${profileData.name}`}
+            sizes="(min-width: 880px) 400px, 100vw"
+          />
         </div>
       </section>
 

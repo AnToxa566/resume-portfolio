@@ -5,7 +5,7 @@
     "I build production web apps across the whole stack — TypeScript on React/Next.js and Angular on the frontend, Node.js and NestJS on the backend, deployed on GCP, Cloudflare and Vercel. Three years of it inside product teams.",
     "What I care about is the part after merge: whether the change moved a number, what it cost to run, and what it will cost the next person to maintain."
   ],
-  "portraitLabel": "PORTRAIT — 4:5",
+  "portraitImage": "/images/about/hero.jpg",
   "cta": { "label": "Get in touch", "href": "#contact" },
   "facts": [
     { "label": "Location", "value": "Varna, Bulgaria (EET)" },
@@ -42,56 +42,56 @@
         "kicker": "First year",
         "title": "Starting computer science in Zaporizhzhia",
         "body": "Enrolled at the Polytechnic National University with no real code behind me. The first year was algorithms on paper and C++ in a lab, and the first thing that stuck was how much faster I learned when I had something to ship.",
-        "image": "PHOTO — UNIVERSITY"
+        "image": "/images/about/university.jpg"
       },
 {
         "year": "2021",
         "kicker": "First shipped thing",
         "title": "A puzzle game built in Unity",
         "body": "Spent a few months on a puzzle game in Unity and C# — several levels, working mechanics, an APK you could install and actually play. First time I took something past the interesting part and finished it.",
-        "image": "PHOTO — UNITY GAME"
+        "image": "/images/about/unity-game.jpg"
       },
       {
         "year": "Oct 2022",
         "kicker": "First team",
         "title": "Internship at GroupBWT",
         "body": "First time working inside a real process: Jira tickets, code review, a mentor reading everything I wrote. Shipped features across frontend, backend and admin panel, and learned to size work honestly.",
-        "image": "PHOTO — OFFICE"
+        "image": "/images/about/bwt.jpg"
       },
       {
         "year": "May 2023",
         "kicker": "Summer intensive",
         "title": "Binary Studio Academy",
         "body": "Three months of full stack work at a pace that left no room for gaps: React, Express, Docker, WebSockets, tests expected rather than optional. Most of what I know about learning a stack quickly comes from that summer.",
-        "image": "PHOTO — ACADEMY"
+        "image": "/images/about/binary-studio-academy.jpg"
       },
       {
         "year": "Aug 2023",
         "kicker": "First money for code",
         "title": "Vibe Barbershop",
         "body": "A friend's barbershop needed a site, and it became the first thing I built that someone paid for and real customers used. Two locations, an admin panel the owners still update themselves. Short project, but the first one where shipping it wrong had consequences beyond a grade.",
-        "image": "PHOTO — VIBE"
+        "image": "/images/about/vibe.jpg"
       },
       {
         "year": "Oct 2023",
         "kicker": "First full-time role",
         "title": "ArtWizard",
         "body": "First salaried job. Joined as the only developer on a platform for discovering cultural events and built it from an empty repository — Next.js on the front, NestJS behind it. Worked directly with a designer on a shared UI kit, which was the first time someone else's decisions had to render exactly right.",
-        "image": "PHOTO — ARTWIZARD"
+        "image": "/images/about/artwizard.jpg"
       },
       {
         "year": "Dec 2023",
         "kicker": "Product work",
         "title": "Joining a product team at Coverr",
         "body": "Moved from building features to owning them: an Angular and NestJS microservice platform with paying users, analytics on every funnel, and infrastructure decisions with a monthly bill attached.",
-        "image": "PHOTO — DESK SETUP"
+        "image": "/images/about/coverr.jpg"
       },
       {
         "year": "2025",
         "kicker": "Relocation",
         "title": "Moving to Varna",
         "body": "Relocated to the Bulgarian coast and settled into remote work across European time zones.",
-        "image": "PHOTO — VARNA"
+        "image": "/images/about/varna.jpg"
       }
     ]
   },
@@ -99,6 +99,6 @@
     "label": "Now",
     "heading": "Based in Varna, Bulgaria",
     "body": "Working remotely on EET, which overlaps comfortably with most European teams and part of the US morning. Open to a new full-time role — remote, or on-site here in Varna — ideally on a product with real users and real numbers to move.",
-    "image": "PHOTO — VARNA, WIDE"
+    "image": "/images/about/varna-wide.jpg"
   }
 }

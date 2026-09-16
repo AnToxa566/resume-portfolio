@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { aboutData } from "@/data";
 import { Section } from "@/components/section";
-import { Placeholder } from "@/components/ui/placeholder";
 
 export function AboutNow() {
   const { now } = aboutData;
@@ -11,7 +12,15 @@ export function AboutNow() {
         {now.heading}
       </h2>
       <p className="mt-5 mb-10 max-w-[62ch] text-pretty text-muted">{now.body}</p>
-      <Placeholder ratio="21/9" label={now.image} />
+      <div className="relative aspect-[21/9] overflow-hidden rounded-lg border border-line">
+        <Image
+          src={now.image}
+          alt={now.heading}
+          fill
+          sizes="(min-width: 1024px) 960px, 100vw"
+          className="object-cover"
+        />
+      </div>
     </Section>
   );
 }

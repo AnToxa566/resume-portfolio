@@ -1,7 +1,8 @@
+import Image from "next/image";
+
 import { aboutData } from "@/data";
 import { cn } from "@/lib/cn";
 import { Section } from "@/components/section";
-import { Placeholder } from "@/components/ui/placeholder";
 import { SectionLabel } from "@/components/ui/section-label";
 
 export function AboutTimeline() {
@@ -33,13 +34,19 @@ export function AboutTimeline() {
 
             <div
               className={cn(
-                "flex-[1_1_260px] min-w-[220px]",
+                "relative aspect-[4/3] min-w-[220px] flex-[1_1_260px] overflow-hidden rounded-lg border border-line",
                 imageLeft
                   ? "order-last min-[560px]:order-first"
                   : "order-last",
               )}
             >
-              <Placeholder ratio="4/3" label={entry.image} />
+              <Image
+                fill
+                src={entry.image}
+                alt={entry.title}
+                className="object-cover"
+                sizes="(min-width: 560px) 360px, 100vw"
+              />
             </div>
           </div>
         );

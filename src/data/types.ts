@@ -195,7 +195,7 @@ export interface AboutStoryEntry {
   kicker: string;
   title: string;
   body: string;
-  /** Placeholder label shown in the image slot until a real asset exists. */
+  /** Image — a URL or root-relative path, e.g. `/images/about/university.jpg`. */
   image: string;
 }
 
@@ -204,7 +204,8 @@ export interface AboutContent {
   headline: string;
   /** Lead paragraphs, rendered in order. */
   intro: string[];
-  portraitLabel: string;
+  /** Portrait image — a URL or root-relative path, e.g. `/images/about/hero.jpg`. */
+  portraitImage: string;
   cta: { label: string; href: string };
   facts: AboutFact[];
   principles: {
@@ -220,6 +221,7 @@ export interface AboutContent {
     label: string;
     heading: string;
     body: string;
+    /** Image — a URL or root-relative path, e.g. `/images/about/varna-wide.jpg`. */
     image: string;
   };
 }
@@ -232,7 +234,8 @@ export interface Profile {
     status: string;
     headline: string;
     intro: string;
-    portraitLabel: string;
+    /** Portrait image — a URL or root-relative path, e.g. `/images/home/hero.jpg`. */
+    portraitImage: string;
     stats: HeroStat[];
   };
   about: {

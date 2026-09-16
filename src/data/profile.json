@@ -10,7 +10,7 @@
     "status": "Open to work · Varna, Bulgaria · Remote or on-site",
     "headline": "Full stack engineer who ships and measures",
     "intro": "Three years building production web apps across frontend and backend — from architecture decisions through to deployment and monitoring. TypeScript across React/Next.js and Angular, NestJS services, and cloud infrastructure on GCP and Cloudflare.",
-    "portraitLabel": "PORTRAIT — 4:5",
+    "portraitImage": "/images/home/hero.jpg",
     "stats": [
       { "value": "3", "caption": "years building production web apps" },
       { "value": "~4×", "caption": "subscription MRR after shipping AI Studio" },
