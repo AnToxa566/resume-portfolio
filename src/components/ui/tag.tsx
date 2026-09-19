@@ -12,7 +12,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded font-mono",
+        "inline-flex items-center rounded font-mono whitespace-nowrap",
         tone === "default" &&
           "border border-line px-2.5 py-1 text-xs text-muted",
         tone === "signal" &&

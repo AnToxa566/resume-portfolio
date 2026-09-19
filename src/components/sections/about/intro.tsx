@@ -11,9 +11,9 @@ export function AboutIntro() {
 
   return (
     <>
-      <section className="relative isolate flex flex-wrap items-start gap-[clamp(2rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)]">
+      <section className="relative isolate flex flex-col min-[880px]:flex-row items-start gap-[clamp(2rem,5vw,4rem)] pt-[clamp(3.5rem,9vw,6rem)] pb-[clamp(2.5rem,6vw,4rem)]">
         <HeroGrid />
-        <div className="min-w-0 flex-1 basis-[460px]">
+        <div className="min-w-0 w-full min-[880px]:flex-1 min-[880px]:basis-[460px]">
           <p className="flex animate-rise items-center gap-2.5 font-mono text-xs tracking-[0.12em] text-muted">
             <span className="size-1.5 flex-none rounded-full bg-signal" />
             {label}
@@ -38,7 +38,7 @@ export function AboutIntro() {
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] animate-rise basis-[400px] min-w-[260px] grow-0 overflow-hidden rounded-lg border border-line [animation-delay:220ms]">
+        <div className="relative aspect-[4/5] animate-rise w-full min-[880px]:basis-[400px] min-[880px]:min-w-[260px] min-[880px]:grow-0 overflow-hidden rounded-lg border border-line [animation-delay:220ms]">
           <Image
             fill
             priority
@@ -50,7 +50,7 @@ export function AboutIntro() {
         </div>
       </section>
 
-      <section className="grid animate-rise grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-px overflow-hidden rounded-lg border border-line bg-line [animation-delay:280ms]">
+      <section className="grid animate-rise grid-cols-1 min-[600px]:grid-cols-2 min-[1024px]:grid-cols-4 gap-px overflow-hidden rounded-lg border border-line bg-line [animation-delay:280ms]">
         {facts.map((fact) => (
           <div key={fact.label} className="bg-bg p-6">
             <SectionLabel>{fact.label}</SectionLabel>

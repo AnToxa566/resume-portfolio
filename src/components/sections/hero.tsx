@@ -45,7 +45,7 @@ export function Hero() {
         </div>
       </section>
 
-      <section className="grid animate-rise grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-px border-y border-line [animation-delay:280ms]">
+      <section className="grid animate-rise grid-cols-1 min-[600px]:grid-cols-2 min-[1024px]:grid-cols-4 gap-px border-y border-line [animation-delay:280ms]">
         {hero.stats.map((stat) => (
           <Metric
             key={stat.caption}
@@ -53,7 +53,7 @@ export function Hero() {
             from={stat.from}
             to={stat.to}
             caption={stat.caption}
-            className="bg-bg px-6 py-7 first:pl-0 last:pr-0"
+            className="bg-bg px-6 py-7 pl-0 pr-0 min-[600px]:px-6 min-[600px]:odd:pl-0 min-[600px]:even:pr-0 min-[1024px]:px-6 min-[1024px]:[&:nth-child(4n+1)]:pl-0 min-[1024px]:[&:nth-child(4n)]:pr-0"
           />
         ))}
       </section>

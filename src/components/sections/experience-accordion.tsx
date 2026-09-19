@@ -35,44 +35,48 @@ export function ExperienceAccordion({ roles }: { roles: Role[] }) {
               aria-controls={panelId}
               onClick={() => setOpenId(isOpen ? null : role.id)}
               className={cn(
-                "group flex w-full cursor-pointer flex-wrap items-baseline gap-x-5 gap-y-2 px-5 py-[22px] text-left transition-colors",
+                "group flex w-full cursor-pointer flex-col gap-y-2 px-5 py-[22px] text-left transition-colors lg:flex-row lg:flex-nowrap lg:items-center lg:gap-x-5 lg:gap-y-0",
                 !isOpen && "hover:bg-surface",
               )}
             >
-              <span className="shrink-0 grow-0 basis-[170px] font-mono text-xs text-muted">
-                {role.period}
-              </span>
-              <span className="grow basis-[240px] font-medium text-ink">
-                {role.title}
-              </span>
-              <span className="flex flex-none items-center gap-2 whitespace-nowrap text-sm text-muted">
-                <a
-                  href={role.companyHref}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  onClick={(event) => event.stopPropagation()}
-                  className="inline-flex items-center gap-2.5 rounded text-muted transition-colors hover:text-ink"
+              <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2 lg:contents">
+                <span className="shrink-0 grow-0 basis-[170px] font-mono text-xs text-muted">
+                  {role.period}
+                </span>
+                <span className="grow basis-[240px] font-medium text-ink">
+                  {role.title}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-4 lg:contents">
+                <span className="flex flex-none items-center gap-2 whitespace-nowrap text-sm text-muted">
+                  <a
+                    href={role.companyHref}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    onClick={(event) => event.stopPropagation()}
+                    className="inline-flex items-center gap-2.5 rounded text-muted transition-colors hover:text-ink"
+                  >
+                    <Image
+                      src={role.logo}
+                      alt={`${role.company} logo`}
+                      width={20}
+                      height={20}
+                      className="size-5 flex-none rounded border border-line object-cover"
+                    />
+                    {role.company}
+                  </a>
+                  <span>·</span>
+                  <span>{role.location}</span>
+                </span>
+                <span
+                  className={cn(
+                    "font-mono text-sm text-muted transition-colors lg:ml-auto",
+                    !isOpen && "group-hover:text-ink",
+                  )}
                 >
-                  <Image
-                    src={role.logo}
-                    alt={`${role.company} logo`}
-                    width={20}
-                    height={20}
-                    className="size-5 flex-none rounded border border-line object-cover"
-                  />
-                  {role.company}
-                </a>
-                <span>·</span>
-                <span>{role.location}</span>
-              </span>
-              <span
-                className={cn(
-                  "ml-auto font-mono text-sm text-muted transition-colors",
-                  !isOpen && "group-hover:text-ink",
-                )}
-              >
-                {isOpen ? "−" : "+"}
-              </span>
+                  {isOpen ? "−" : "+"}
+                </span>
+              </div>
             </button>
 
             {isOpen && (

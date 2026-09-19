@@ -91,15 +91,17 @@ export function ProjectCard({
     return (
       <article className={cardClass}>
         <CardImage project={project} variant={variant} />
-        <div className="mt-6 flex flex-wrap items-start justify-between gap-6 px-2 pb-2">
-          <div className="min-w-0 flex-1 basis-[380px]">
-            <h3 className="text-[28px] leading-[1.15] display">{title}</h3>
-            <p className="mt-2.5 max-w-[52ch] text-[15px] text-muted">
-              {project.summary}
-            </p>
-            <TechRow tech={project.tech} className="mt-5" />
+        <div className="mt-6 px-2 pb-2">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-[28px] leading-[1.15] display">
+              {title}
+            </h3>
+            <ProjectLinkRow links={project.links} className="gap-5 pt-1.5" />
           </div>
-          <ProjectLinkRow links={project.links} className="gap-5 pt-1.5" />
+          <p className="mt-2.5 max-w-[52ch] text-[15px] text-muted">
+            {project.summary}
+          </p>
+          <TechRow tech={project.tech} className="mt-5" />
         </div>
       </article>
     );

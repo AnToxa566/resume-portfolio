@@ -35,7 +35,6 @@ export interface ShortProject {
  * ------------------------------------------------------------------ */
 
 export interface CaseStudyMeta {
-  role: string;
   type: string;
   year: string;
   /** Fixed string, or a `{ start, end? }` range formatted at render time. */

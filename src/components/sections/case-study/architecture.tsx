@@ -36,10 +36,8 @@ function DiagramNode({
 
       <div
         className={cn(
-          "w-full",
-          single
-            ? "flex justify-center"
-            : "grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3",
+          "flex w-full flex-wrap justify-center",
+          single ? "" : "gap-3",
         )}
       >
         {node.boxes.map((box, i) => (
@@ -47,7 +45,7 @@ function DiagramNode({
             key={i}
             className={cn(
               "rounded-md border border-line px-4 py-3.5 text-center",
-              single && "w-full max-w-[520px]",
+              single ? "w-full max-w-[520px]" : "min-w-[150px] flex-1 basis-[150px]",
               node.muted ? "text-muted" : "bg-surface",
             )}
           >

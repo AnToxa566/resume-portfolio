@@ -16,7 +16,6 @@ import { SectionLabel } from "@/components/ui/section-label";
  */
 export function CaseStudyIntro({ study }: { study: CaseStudy }) {
   const meta: { label: string; value: string }[] = [
-    { label: "Role", value: study.meta.role },
     { label: "Type", value: study.meta.type },
     { label: "Year", value: study.meta.year },
     { label: "Duration", value: formatDurationLong(study.meta.duration) },
@@ -56,7 +55,7 @@ export function CaseStudyIntro({ study }: { study: CaseStudy }) {
         )}
       </section>
 
-      <section className="grid animate-rise grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-px overflow-hidden rounded-lg border border-line bg-line [animation-delay:240ms]">
+      <section className="grid animate-rise grid-cols-1 min-[600px]:grid-cols-2 min-[1080px]:grid-cols-4 gap-px overflow-hidden rounded-lg border border-line bg-line [animation-delay:240ms]">
         {meta.map((item) => (
           <div key={item.label} className="bg-bg px-[22px] py-5">
             <SectionLabel>{item.label}</SectionLabel>

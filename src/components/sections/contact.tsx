@@ -16,7 +16,7 @@ export function Contact() {
       </h2>
       <p className="mt-4 mb-10 max-w-[62ch] text-muted">{contact.blurb}</p>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-px overflow-hidden rounded-lg border border-line bg-line">
+      <div className="grid grid-cols-1 min-[600px]:grid-cols-2 min-[1360px]:grid-cols-4 gap-px overflow-hidden rounded-lg border border-line bg-line">
         {contact.links.map((link) => (
           <ContactCard key={link.label} link={link} />
         ))}

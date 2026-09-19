@@ -9,7 +9,7 @@ export function CaseStudyOutcome({
 }) {
   return (
     <Section label="Outcome">
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-px overflow-hidden rounded-lg border border-line bg-line">
+      <div className="grid grid-cols-1 min-[600px]:grid-cols-2 min-[1080px]:grid-cols-4 gap-px overflow-hidden rounded-lg border border-line bg-line">
         {outcome.metrics.map((metric) => (
           <Metric
             key={metric.caption}

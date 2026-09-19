@@ -21,7 +21,7 @@ export function ProjectLinkRow({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-4 font-mono text-xs tracking-[0.08em]",
+        "flex items-center gap-4 font-mono text-xs tracking-[0.08em]",
         className,
       )}
     >
@@ -29,7 +29,7 @@ export function ProjectLinkRow({
         <a
           href={links.live}
           {...externalProps(links.live)}
-          className="text-muted transition-colors hover:text-ink"
+          className="text-muted transition-colors hover:text-ink whitespace-nowrap"
         >
           LIVE ↗
         </a>
@@ -38,7 +38,7 @@ export function ProjectLinkRow({
         <a
           href={links.github}
           {...externalProps(links.github)}
-          className="text-muted transition-colors hover:text-ink"
+          className="text-muted transition-colors hover:text-ink whitespace-nowrap"
         >
           GITHUB ↗
         </a>
@@ -46,7 +46,7 @@ export function ProjectLinkRow({
       {showCaseStudy && links.caseStudy && (
         <Link
           href={links.caseStudy}
-          className="text-ink transition-colors hover:text-signal"
+          className="text-ink transition-colors hover:text-signal whitespace-nowrap"
         >
           CASE STUDY →
         </Link>
