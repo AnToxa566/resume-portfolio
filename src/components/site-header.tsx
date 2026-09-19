@@ -10,6 +10,7 @@ import { profileData } from "@/data";
 
 import { Container } from "@/components/ui/container";
 import { DownloadCvButton } from "@/components/download-cv-button";
+import { MobileNav } from "@/components/mobile-nav";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,7 +53,11 @@ export function SiteHeader() {
             ))}
           </span>
 
-          <DownloadCvButton size="sm" />
+          <span className="hidden min-[600px]:inline-flex">
+            <DownloadCvButton size="sm" />
+          </span>
+
+          <MobileNav />
         </nav>
       </Container>
     </header>
