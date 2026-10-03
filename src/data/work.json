@@ -70,7 +70,7 @@
       "summary": "Barbershop site for a two-location shop, with an admin panel",
       "tech": ["Next.js", "NestJS", "TypeORM", "PostgreSQL"],
       "links": {
-        "live": "https://vibe-barbershop.com.ua",
+        "live": "https://vibe-barbershop.com",
         "github": "https://github.com/AnToxa566/vibe",
         "caseStudy": "/work/vibe"
       }
