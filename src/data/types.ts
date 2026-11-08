@@ -164,6 +164,7 @@ export interface HeroStat {
   value?: string;
   from?: string;
   to?: string;
+  label?: string;
   caption: string;
 }
 

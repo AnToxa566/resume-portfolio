@@ -52,6 +52,7 @@ export function Hero() {
             value={stat.value}
             from={stat.from}
             to={stat.to}
+            label={stat.label}
             caption={stat.caption}
             className="bg-bg px-6 py-7 pl-0 pr-0 min-[600px]:px-6 min-[600px]:odd:pl-0 min-[600px]:even:pr-0 min-[1024px]:px-6 min-[1024px]:[&:nth-child(4n+1)]:pl-0 min-[1024px]:[&:nth-child(4n)]:pr-0"
           />

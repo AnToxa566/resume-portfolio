@@ -12,10 +12,10 @@
     "intro": "Four years building production web apps across frontend and backend — from architecture decisions through to deployment and monitoring. TypeScript across React/Next.js and Angular, NestJS services, and cloud infrastructure on GCP and Cloudflare.",
     "portraitImage": "/images/home/hero.jpg",
     "stats": [
-      { "value": "4", "caption": "years building production web apps" },
-      { "value": "~4×", "caption": "subscription MRR after shipping AI Studio" },
+      { "value": "4", "label": "years", "caption": "building production web apps" },
+      { "value": "~4×", "label": "subscription MRR", "caption": "after shipping AI Studio" },
       { "value": "~85%", "from": "Cloud Run", "to": "Workers", "caption": "hosting cost cut" },
-      { "value": "10+", "caption": "A/B experiments on conversion funnels" }
+      { "value": "10+", "label": "A/B experiments", "caption": "on conversion funnels" }
     ]
   },
   "about": {

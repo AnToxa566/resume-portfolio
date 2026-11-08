@@ -7,12 +7,22 @@ interface MetricProps {
   from?: string;
   /** After value of a "from → to" delta line. */
   to?: string;
+  /** Plain headline line under the figure, in the same slot as the delta line. */
+  label?: string;
   caption?: string;
   className?: string;
 }
 
-export function Metric({ value, from, to, caption, className }: MetricProps) {
+export function Metric({
+  value,
+  from,
+  to,
+  label,
+  caption,
+  className,
+}: MetricProps) {
   const hasDelta = Boolean(from && to);
+  const hasHeadline = hasDelta || Boolean(label);
 
   return (
     <div className={className}>
@@ -35,11 +45,17 @@ export function Metric({ value, from, to, caption, className }: MetricProps) {
         </div>
       )}
 
+      {label && !hasDelta && (
+        <div className={cn("font-mono text-sm text-ink", value && "mt-3")}>
+          {label}
+        </div>
+      )}
+
       {caption && (
         <div
           className={cn(
             "font-mono text-xs leading-normal text-muted",
-            hasDelta ? "mt-1.5" : value ? "mt-3" : undefined,
+            hasHeadline ? "mt-1.5" : value ? "mt-3" : undefined,
           )}
         >
           {caption}
