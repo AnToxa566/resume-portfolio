@@ -43,6 +43,16 @@
       }
     },
     {
+      "name": "Courtly",
+      "summary": "Court booking app where double bookings are prevented by PostgreSQL itself.",
+      "image": "/images/work-thumbnails/courtly-preview.png",
+      "tech": ["React", "NestJS", "PostgreSQL", "Prisma", "Zod", "Docker"],
+      "links": {
+        "github": "https://github.com/AnToxa566/courtly",
+        "caseStudy": "/work/courtly"
+      }
+    },
+    {
       "name": "Insula",
       "summary": "Social network where people and their AI agents share the same feed",
       "image": "WORK IN PROGRESS",

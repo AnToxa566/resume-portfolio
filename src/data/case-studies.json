@@ -370,6 +370,112 @@
     ]
   },
   {
+    "slug": "courtly",
+    "name": "Courtly",
+    "summary": "Sports court booking app where double bookings are impossible by construction — the guarantee lives in PostgreSQL, and every clock is the facility's.",
+    "heroImage": "/images/case-heroes/courtly.png",
+    "links": {
+      "code": "https://github.com/AnToxa566/courtly"
+    },
+    "meta": {
+      "type": "Take-home challenge",
+      "year": "Oct 2026",
+      "duration": "3 days",
+      "team": "Solo"
+    },
+    "context": [
+      "Courtly is a booking system for a single sports facility. Players sign in, browse courts, pick one or two consecutive hours from a day's slots, and cancel up to two hours before the start. Admins manage the courts and see a day's bookings across all of them, with expected revenue.",
+      "It was a take-home challenge for a fullstack role, built solo in three days. The screens are the easy part. What I wanted to get right was the part that breaks real booking systems: two people grabbing the same court in the same instant, and 'now', 'today' and 'two hours before' meaning the facility's clock rather than the server's or the browser's."
+    ],
+    "problem": [
+      "A booking system has one rule that cannot be allowed to fail: a court is never held by two people at once. The obvious implementation checks availability and then inserts, and that is wrong — two requests can both pass the check before either one writes. The guarantee has to hold under concurrency, which means it cannot live in application code.",
+      "The second problem is time. The facility runs in Europe/Lisbon, the containers run in UTC and the browser can be anywhere. Every rule that touches time — not in the past, cancel two hours before, which day a booking belongs to for the admin's revenue — has to give the same answer regardless of where it runs, including on the two nights a year when the clocks change."
+    ],
+    "stack": {
+      "intro": "An npm-workspaces monorepo with three packages: a NestJS 11 API, a React 19 and Vite single-page app, and a shared contracts package of Zod schemas. The API talks to PostgreSQL 17 through Prisma 7 and validates every request against the contracts; the web app infers its types from the same schemas, so no shape is written twice. nginx serves the web build and proxies /api to the API, so the browser only ever sees one origin. `docker compose up` brings up the database, migrations, seed, API and web from a clean clone.",
+      "diagram": {
+        "label": "REQUEST PATH",
+        "nodes": [
+          {
+            "boxes": [
+              { "title": "Browser", "subtitle": "React 19 · TanStack Query" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "SAME-ORIGIN /api/*",
+            "boxes": [
+              { "title": "nginx", "subtitle": "static build · proxy to API" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "boxes": [
+              { "title": "NestJS API", "subtitle": "guards · services · injected Clock" }
+            ]
+          },
+          {
+            "connector": "signal",
+            "connectorLabel": "EXCLUSION CONSTRAINT",
+            "boxes": [
+              { "title": "PostgreSQL 17", "subtitle": "Prisma 7 · booking_no_overlap" }
+            ]
+          },
+          {
+            "connector": "plain",
+            "muted": true,
+            "boxes": [
+              { "title": "@courtly/contracts", "subtitle": "Zod schemas shared by API and web" }
+            ]
+          }
+        ]
+      },
+      "tech": ["TypeScript", "React", "Vite", "TanStack Query", "React Hook Form", "Tailwind CSS", "shadcn/ui", "NestJS", "Prisma", "PostgreSQL", "Zod", "Luxon", "JWT", "Jest", "Vitest", "Docker", "nginx"]
+    },
+    "decisions": [
+      {
+        "title": "The database refuses the double booking",
+        "body": "A booking is one row with a start and an end, and a PostgreSQL exclusion constraint over (court, time range) refuses any two non-cancelled rows that overlap. The range is half-open, so 16:00–17:00 and 17:00–18:00 coexist, and a cancelled booking drops out of the constraint and frees its slot. The service never checks first: it inserts, and the exception filter turns the constraint violation into a 409. A check in code can be passed by two requests at once; a constraint can't."
+      },
+      {
+        "title": "Prove it with a real race, not a mock",
+        "body": "Ten parallel POST /bookings from two users for the same slot give exactly one 201, nine 409 SLOT_TAKEN and one row. The test runs through HTTP against a real PostgreSQL, and I checked it can fail: with the constraint dropped, it ends with ten successful bookings. A concurrency test that cannot fail without the guarantee isn't testing it."
+      },
+      {
+        "title": "All time logic in the API, behind an injected Clock",
+        "body": "Luxon with a configured facility zone, and 'now' comes only from an injected Clock — nothing else in the API calls new Date(). That is what makes 'not in the past' and 'cancel up to two hours before' testable with a fixed clock. The API also computes each booking's status, canCancel and cancellableUntil, so the browser formats instants in the facility zone and does no time arithmetic beyond stepping calendar dates."
+      },
+      {
+        "title": "Status is derived, never stored",
+        "body": "There is a cancelledAt column and no status column. upcoming, in_progress, completed and cancelled are computed from the current time in one function, with half-open boundaries. A stored status would need something to update it as time passes, and would be wrong whenever that something lagged."
+      },
+      {
+        "title": "Identity from the token, everything else from the database",
+        "body": "The JWT carries only the user id. On every request the user and role are loaded from the database, so a role change or a removed user takes effect immediately, at the cost of one query per request. Routes are authenticated by default and admin routes carry a role guard. Someone else's booking returns 404 rather than 403, so ids can't be probed."
+      },
+      {
+        "title": "Nothing is deleted, prices are snapshots",
+        "body": "Courts are deactivated and bookings are cancelled; foreign keys are restrict-only. A booking stores its total price at creation, so an admin changing a court's rate never rewrites past revenue. Money is integer cents and every timestamp is timestamptz — Prisma's default timestamp without a zone would have quietly broken both the range constraint and the facility-time logic."
+      }
+    ],
+    "outcome": {
+      "metrics": [
+        { "from": "check, then insert", "to": "exclusion constraint", "caption": "double booking prevented by PostgreSQL, not application code" },
+        { "from": "10 parallel requests", "to": "1 booking", "caption": "one 201 and nine 409s, over HTTP against a real database" },
+        { "from": "server or browser time", "to": "facility time", "caption": "every 'now' and 'today' resolved in Europe/Lisbon through one Clock" },
+        { "from": "clean clone", "to": "one command", "caption": "docker compose up: database, migrations, seed, API and web" }
+      ],
+      "note": "Complete against the brief: court management, hourly availability, one- and two-hour bookings, cancellation window, my bookings and the admin day view with revenue, plus e2e tests for double booking, the cancellation window, opening hours and a daylight-saving day."
+    },
+    "tradeoffs": [
+      "The core guarantee is specific to PostgreSQL, and Prisma can't express an exclusion constraint, so it lives in a hand-written migration. Prisma doesn't know it exists, which means every generated migration has to be read before it is applied — a test asserts the constraint is present, but the drift risk is real.",
+      "The token sits in localStorage and lives eight hours, with no refresh, no revocation and no login throttling. That is a deliberate shortcut for a take-home and it exposes the session to XSS. The next step is an httpOnly cookie with CSRF protection and refresh tokens.",
+      "Frontend tests cover only pure modules: formatting, date stepping, slot selection and the API client. There are no component or browser end-to-end tests, so routing, the session and the pages were verified by hand. The part with the most business risk is tested heavily; the part with the most surface area isn't.",
+      "Lists are not paginated. 'My bookings' loads a user's whole history and filters it in memory by derived status, which keeps the boundaries in one place but would not survive a busy facility. Pagination would mean rewriting the status rules as a SQL predicate that matches the code.",
+      "Daylight saving is handled, not hidden. On the day the clocks go back a court open all day has 25 slots, two of them labelled 01:00, so the UI identifies slots by their start instant rather than their label. It's correct and tested, but it's the kind of edge a simpler model would have avoided by ignoring it."
+    ]
+  },
+  {
     "slug": "insula",
     "name": "Insula",
     "summary": "A social network where people and their AI agents share the same feed — agents run on the owner's own API keys.",
