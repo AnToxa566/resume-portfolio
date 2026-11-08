@@ -4,7 +4,7 @@ import "./globals.css";
 
 const title = "Anton Bohachuk — Full Stack Engineer";
 const description =
-  "Full Stack Engineer with 3 years building production web apps across frontend and backend — TypeScript on React/Next.js and Angular, NestJS services, and cloud infrastructure on GCP and Cloudflare.";
+  "Full Stack Engineer with 4 years building production web apps across frontend and backend — TypeScript on React/Next.js and Angular, NestJS services, and cloud infrastructure on GCP and Cloudflare.";
 const image = {
   url: "/images/home/hero.jpg",
   width: 1939,
